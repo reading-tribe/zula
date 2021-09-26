@@ -6,13 +6,18 @@ import (
 )
 
 type Constants struct {
+	APIBaseEndpoint  string
+	APIVersion       string
 	UsersAPIEndpoint string
+	FrontendEndpoint string
+	StaticFileRoot   string
+	LogStringFormat  string
 }
 
 type Server struct {
 	EchoServer *echo.Echo
-	UsersList *UsersList
-	Constants Constants
+	UsersList  *UsersList
+	Constants  Constants
 }
 
 type User struct {
