@@ -15,15 +15,15 @@
 # vendor/
 
 # dependencies
-/pkg/api/static/node_modules
-/pkg/api/static/.pnp
+/src/webapp/node_modules
+/src/webapp/.pnp
 .pnp.js
 
 # testing
-/pkg/api/static/coverage
+/src/webapp/coverage
 
 # production
-/pkg/api/static/build
+/src/webapp/build
 
 .DS_Store
 .env.local

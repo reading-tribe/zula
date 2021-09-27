@@ -40,7 +40,7 @@ func setupMiddleware(s *Server) {
 	}))
 	e.Use(middleware.Recover())
 	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"localhost"},
+		AllowOrigins: []string{"http://localhost", "http://localhost:3000", "http://localhost:8080"},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
 	// e.Use(middleware.BodyDump(dumpReqAndRes))
@@ -55,8 +55,6 @@ func buildAPIRoute(s *Server, endpoint string) string {
 func registerRoutes(s *Server) {
 	e := s.EchoServer
 	c := s.Constants
-
-	e.Static(c.FrontendEndpoint, c.StaticFileRoot)
 
 	e.GET(buildAPIRoute(s, c.UsersAPIEndpoint+"/:id"), s.GetUser)
 	e.GET(buildAPIRoute(s, c.UsersAPIEndpoint), s.ListUsers)

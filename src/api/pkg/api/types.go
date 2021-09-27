@@ -9,8 +9,6 @@ type Constants struct {
 	APIBaseEndpoint  string
 	APIVersion       string
 	UsersAPIEndpoint string
-	FrontendEndpoint string
-	StaticFileRoot   string
 	LogStringFormat  string
 }
 

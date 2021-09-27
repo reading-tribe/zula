@@ -1,7 +1,7 @@
 package api_test
 
 import (
-	"github.com/reading-tribe/zula/pkg/api"
+	api2 "github.com/reading-tribe/zula/src/api/pkg/api"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"net/http/httptest"
@@ -10,8 +10,8 @@ import (
 
 func TestGetUser(t *testing.T) {
 	// Setup
-	usersList := api.GetStaticUsersList()
-	server := api.NewServer(usersList, nil)
+	usersList := api2.GetStaticUsersList()
+	server := api2.NewServer(usersList, nil)
 
 	req := httptest.NewRequest(http.MethodGet, "/", nil)
 	rec := httptest.NewRecorder()
@@ -19,7 +19,7 @@ func TestGetUser(t *testing.T) {
 	c := server.EchoServer.NewContext(req, rec)
 	c.SetPath(server.Constants.UsersAPIEndpoint + "/:id")
 	c.SetParamNames("id")
-	c.SetParamValues(api.DefaultUserId)
+	c.SetParamValues(api2.DefaultUserId)
 
 	if assert.NoError(t, server.GetUser(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
@@ -29,8 +29,8 @@ func TestGetUser(t *testing.T) {
 
 func TestListUsers(t *testing.T) {
 	// Setup
-	usersList := api.GetStaticUsersList()
-	server := api.NewServer(usersList, nil)
+	usersList := api2.GetStaticUsersList()
+	server := api2.NewServer(usersList, nil)
 
 	req := httptest.NewRequest(http.MethodGet, "/", nil)
 	rec := httptest.NewRecorder()

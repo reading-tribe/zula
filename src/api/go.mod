@@ -1,4 +1,4 @@
-module github.com/reading-tribe/zula
+module github.com/reading-tribe/zula/src/api
 
 go 1.16
 

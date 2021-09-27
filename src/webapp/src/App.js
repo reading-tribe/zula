@@ -7,17 +7,22 @@ import {
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./pages/Home"
-import Nav from "./components/Nav"
-import ZulaNav from "./components/Nav";
+import Account from "./pages/Account"
+import Books from "./pages/Books"
 
 export default function App() {
   return (
       <Router>
         <div>
-          <ZulaNav />
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
+            <Route path="/books">
+              <Books />
+            </Route>
+            <Route path="/account">
+              <Account />
+            </Route>
             <Route path="/">
               <Home />
             </Route>
