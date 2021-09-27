@@ -18,11 +18,8 @@ jobs:
       with:
         go-version: 1.17
 
-    - name: Enter src directory
-      run: cd src/api
-
     - name: Build
-      run: go build -v ./cmd/api
+      run: cd src/api && go build -v ./cmd/api
 
     - name: Test
-      run: go test -v ./pkg/api/test
+      run: cd src/api && go test -v ./pkg/api/test
