@@ -9,7 +9,7 @@ RUN go mod download
 
 COPY cmd /app/cmd/
 
-COPY src/api/pkg/api/*.go /app/pkg/api/
+COPY pkg/api/*.go /app/pkg/api/
 
 EXPOSE 1323
 

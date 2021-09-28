@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  api:
+    build:
+      context: ./src/api
+    image: zula-api
+    ports:
+      - "1323:1323"
+
+  webapp:
+    build:
+      context: ./src/webapp
+    image: zula-webapp
+    ports:
+      - "8080:80"
