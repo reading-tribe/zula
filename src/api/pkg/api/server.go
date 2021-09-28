@@ -6,7 +6,12 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
-func NewServer(usersList *UsersList, constants *Constants) *Server {
+func NewServer(
+	usersList *UsersList,
+	accountsList *AccountsList,
+	booksList *BooksList,
+	constants *Constants,
+) *Server {
 	e := echo.New()
 
 	if constants == nil {
@@ -15,9 +20,11 @@ func NewServer(usersList *UsersList, constants *Constants) *Server {
 	}
 
 	s := &Server{
-		EchoServer: e,
-		UsersList:  usersList,
-		Constants:  *constants,
+		EchoServer:   e,
+		UsersList:    usersList,
+		AccountsList: accountsList,
+		BooksList:    booksList,
+		Constants:    *constants,
 	}
 
 	setupMiddleware(s)
@@ -58,4 +65,11 @@ func registerRoutes(s *Server) {
 
 	e.GET(buildAPIRoute(s, c.UsersAPIEndpoint+"/:id"), s.GetUser)
 	e.GET(buildAPIRoute(s, c.UsersAPIEndpoint), s.ListUsers)
+
+	e.GET(buildAPIRoute(s, c.AccountsAPIEndpoint+"/:id"), s.GetAccount)
+	e.GET(buildAPIRoute(s, c.AccountsAPIEndpoint), s.ListAccounts)
+
+	e.GET(buildAPIRoute(s, c.BooksAPIEndpoint+"/:id"), s.GetBook)
+	e.GET(buildAPIRoute(s, c.BooksAPIEndpoint+"/locale/:locale"), s.ListBooksInLocale)
+	e.GET(buildAPIRoute(s, c.BooksAPIEndpoint), s.ListBooks)
 }

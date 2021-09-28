@@ -6,6 +6,8 @@ import (
 
 func main() {
 	usersList := api2.GetStaticUsersList()
-	server := api2.NewServer(usersList, nil)
+	accountsList := api2.GetStaticAccountsList()
+	booksList := api2.GetStaticBooksList()
+	server := api2.NewServer(usersList, accountsList, booksList, nil)
 	server.EchoServer.Logger.Info(server.EchoServer.Start(":1323"))
 }
