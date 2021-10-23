@@ -9,7 +9,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetUser(t *testing.T) {
+func TestGetAccount(t *testing.T) {
 	// Setup
 	zulaAPI.SeedDB()
 	server := zulaAPI.NewServer(nil)
@@ -19,16 +19,16 @@ func TestGetUser(t *testing.T) {
 	rec := httptest.NewRecorder()
 
 	c := server.EchoServer.NewContext(req, rec)
-	c.SetPath(server.Constants.UsersAPIEndpoint + "/:id")
+	c.SetPath(server.Constants.AccountsAPIEndpoint + "/:id")
 	c.SetParamNames("id")
-	c.SetParamValues(zulaAPI.DefaultUserId)
+	c.SetParamValues(zulaAPI.DefaultAccountId)
 
-	if assert.NoError(t, server.GetUser(c)) {
+	if assert.NoError(t, server.GetAccount(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 	}
 }
 
-func TestListUsers(t *testing.T) {
+func TestListAccounts(t *testing.T) {
 	// Setup
 	zulaAPI.SeedDB()
 	server := zulaAPI.NewServer(nil)
@@ -38,9 +38,9 @@ func TestListUsers(t *testing.T) {
 	rec := httptest.NewRecorder()
 
 	c := server.EchoServer.NewContext(req, rec)
-	c.SetPath(server.Constants.UsersAPIEndpoint)
+	c.SetPath(server.Constants.AccountsAPIEndpoint)
 
-	if assert.NoError(t, server.ListUsers(c)) {
+	if assert.NoError(t, server.ListAccounts(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 	}
 }

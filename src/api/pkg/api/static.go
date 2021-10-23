@@ -20,9 +20,9 @@ var DefaultAccountId = "2e771804-3900-44eb-89f7-28a8801f381c"
 var DefaultSubAccount1Id = "a6084b06-487a-413c-91f2-58bc4057831f"
 var DefaultSubAccount1DisplayName = "Test User - Sub Account 1"
 var DefaultSubAccount2Id = "bc97b04a-7d56-46ab-b203-188cf74b47b2"
-var DefaultSubAccount2DisplayName = "Test User - Sub Account 1"
+var DefaultSubAccount2DisplayName = "Test User - Sub Account 2"
 var DefaultSubAccount3Id = "a49f87fd-9a28-44b0-8953-07c2063dbe0a"
-var DefaultSubAccount3DisplayName = "Test User - Sub Account 1"
+var DefaultSubAccount3DisplayName = "Test User - Sub Account 3"
 
 func GetStaticAccountsList() *AccountsList {
 	return &AccountsList{

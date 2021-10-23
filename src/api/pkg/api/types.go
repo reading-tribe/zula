@@ -1,8 +1,11 @@
 package api
 
 import (
+	"context"
 	"fmt"
+
 	"github.com/labstack/echo/v4"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 type Constants struct {
@@ -15,17 +18,20 @@ type Constants struct {
 }
 
 type Server struct {
-	EchoServer   *echo.Echo
-	UsersList    *UsersList
-	AccountsList *AccountsList
-	BooksList    *BooksList
-	Constants    Constants
+	EchoServer         *echo.Echo
+	UsersList          *UsersList
+	AccountsList       *AccountsList
+	BooksList          *BooksList
+	Constants          Constants
+	MongoClient        *mongo.Client
+	MongoContext       *context.Context
+	MongoContextCancel context.CancelFunc
 }
 
 type User struct {
-	ID          string `json:"id"`
-	Email       string `json:"email"`
-	DisplayName string `json:"displayName"`
+	ID          string `json:"id" bson:"id"`
+	Email       string `json:"email" bson:"email"`
+	DisplayName string `json:"displayName" bson:"displayName"`
 }
 
 type UsersList struct {
@@ -42,14 +48,14 @@ func (uL *UsersList) GetUserById(id string) (*User, error) {
 }
 
 type SubAccount struct {
-	ID          string `json:"id"`
-	DisplayName string `json:"displayName"`
+	ID          string `json:"id" bson:"id"`
+	DisplayName string `json:"displayName" bson:"displayName"`
 }
 
 type Account struct {
-	ID          string        `json:"id"`
-	UserID      string        `json:"userId"`
-	SubAccounts []*SubAccount `json:"subAccounts"`
+	ID          string        `json:"id" bson:"id"`
+	UserID      string        `json:"userId" bson:"userId"`
+	SubAccounts []*SubAccount `json:"subAccounts" bson:"subAccounts"`
 }
 
 type AccountsList struct {
@@ -66,21 +72,21 @@ func (aL *AccountsList) GetAccountById(id string) (*Account, error) {
 }
 
 type BookImageLink struct {
-	ID    string `json:"id"`
-	URI   string `json:"uri"`
-	Order int    `json:"order"`
+	ID    string `json:"id" bson:"id"`
+	URI   string `json:"uri" bson:"uri"`
+	Order int    `json:"order" bson:"order"`
 }
 
 type BookTranslation struct {
-	ID      string `json:"id"`
-	Locale  string `json:"locale"`
-	Title   string `json:"title"`
-	Content []*BookImageLink
+	ID      string           `json:"id" bson:"id"`
+	Locale  string           `json:"locale" bson:"locale"`
+	Title   string           `json:"title" bson:"title"`
+	Content []*BookImageLink `json:"content" bson:"content"`
 }
 
 type Book struct {
-	ID           string `json:"id"`
-	Translations []*BookTranslation
+	ID           string             `json:"id" bson:"id"`
+	Translations []*BookTranslation `json:"translations" bson:"translations"`
 }
 
 type BooksList struct {

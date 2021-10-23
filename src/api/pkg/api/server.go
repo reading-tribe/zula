@@ -1,15 +1,11 @@
 package api
 
 import (
-	"fmt"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
 
 func NewServer(
-	usersList *UsersList,
-	accountsList *AccountsList,
-	booksList *BooksList,
 	constants *Constants,
 ) *Server {
 	e := echo.New()
@@ -19,12 +15,17 @@ func NewServer(
 		constants = &temp
 	}
 
+	mongoClient, mongoContext, mongoCancelFunc, err := NewClient()
+	if err != nil {
+		panic(err)
+	}
+
 	s := &Server{
-		EchoServer:   e,
-		UsersList:    usersList,
-		AccountsList: accountsList,
-		BooksList:    booksList,
-		Constants:    *constants,
+		EchoServer:         e,
+		Constants:          *constants,
+		MongoClient:        mongoClient,
+		MongoContext:       mongoContext,
+		MongoContextCancel: mongoCancelFunc,
 	}
 
 	setupMiddleware(s)
@@ -33,10 +34,10 @@ func NewServer(
 	return s
 }
 
-func dumpReqAndRes(c echo.Context, reqBody, resBody []byte) {
+/*func dumpReqAndRes(c echo.Context, reqBody, resBody []byte) {
 	fmt.Printf("Request Body: %v", string(reqBody))
 	fmt.Printf("Response Body: %v", string(resBody))
-}
+}*/
 
 func setupMiddleware(s *Server) {
 	e := s.EchoServer

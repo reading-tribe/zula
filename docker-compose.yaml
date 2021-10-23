@@ -7,6 +7,8 @@ services:
     image: zula-api
     ports:
       - "1323:1323"
+    links:
+      - mongo
 
   webapp:
     build:
@@ -14,3 +16,18 @@ services:
     image: zula-webapp
     ports:
       - "8080:80"
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    image: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_PORT=27017
+    depends_on:
+      - mongo
+    ports:
+      - "8081:8081"

@@ -2,37 +2,76 @@ package api
 
 import (
 	"fmt"
-	"github.com/labstack/echo/v4"
 	"net/http"
+
+	"github.com/labstack/echo/v4"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func (s *Server) GetBook(c echo.Context) error {
+	collection := s.MongoClient.Database("zula").Collection("books")
+
 	id := c.Param("id")
 	if len(id) == 0 {
 		c.Logger().Info(id)
 		return fmt.Errorf("unable to get ID from query params")
 	}
 
-	u, err := s.BooksList.GetBookById(id)
+	filter := bson.M{
+		"id": id,
+	}
+
+	var result Book
+	err := collection.FindOne(*s.MongoContext, filter, &options.FindOneOptions{}).Decode(&result)
 	if err != nil {
 		return fmt.Errorf("unable to get book with ID")
 	}
 
-	return c.JSON(http.StatusOK, u)
+	return c.JSON(http.StatusOK, result)
 }
 
 func (s *Server) ListBooks(c echo.Context) error {
-	return c.JSON(http.StatusOK, s.BooksList)
+	collection := s.MongoClient.Database("zula").Collection("books")
+
+	filter := bson.M{}
+
+	cursor, err := collection.Find(*s.MongoContext, filter, &options.FindOptions{})
+	if err != nil {
+		return fmt.Errorf("unable to get books")
+	}
+
+	var result BooksList
+	if err = cursor.All(*s.MongoContext, &result.Items); err != nil {
+		return fmt.Errorf("unable to get books")
+	}
+
+	return c.JSON(http.StatusOK, result)
 }
 
 func (s *Server) ListBooksInLocale(c echo.Context) error {
+	collection := s.MongoClient.Database("zula").Collection("books")
+
 	locale := c.Param("locale")
 	if len(locale) == 0 {
 		c.Logger().Info(locale)
 		return fmt.Errorf("unable to get locale from query params")
 	}
 
-	bl := s.BooksList.GetBooksWithLocale(locale)
+	filter := bson.M{
+		"translations": bson.M{
+			"locale": locale,
+		}}
 
-	return c.JSON(http.StatusOK, bl)
+	cursor, err := collection.Find(*s.MongoContext, filter, &options.FindOptions{})
+	if err != nil {
+		return fmt.Errorf("unable to get books")
+	}
+
+	var result BooksList
+	if err = cursor.All(*s.MongoContext, &result.Items); err != nil {
+		return fmt.Errorf("unable to get books")
+	}
+
+	return c.JSON(http.StatusOK, result)
 }
