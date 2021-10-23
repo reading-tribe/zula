@@ -19,9 +19,6 @@ type Constants struct {
 
 type Server struct {
 	EchoServer         *echo.Echo
-	UsersList          *UsersList
-	AccountsList       *AccountsList
-	BooksList          *BooksList
 	Constants          Constants
 	MongoClient        *mongo.Client
 	MongoContext       *context.Context
