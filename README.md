@@ -1,11 +1,13 @@
 # Zula, The Reading Tribe
+
 Zula is on a mission to amplify diversity and inclusion in children's libraries and bookshelves around the globe!
 
 We are aiming to develop an open-source + premium subscription online library for inclusive childrens books.
+
 ## Project Setup
 
 - Backend written in Golang
-- Frontedn written in JavaScript using React
+- Frontend written in TypeScript using React
 
 ### Folder Structure
 
@@ -17,6 +19,7 @@ src/
     pkg/
       api/ -- contains API Server code
         test/ -- contains Go tests
+  go2ts/ -- contains script to generate TS interfaces
   webapp/
     public/  -- contains frontend public assets
     src/  -- contains React frontend code
