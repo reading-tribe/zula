@@ -15,8 +15,9 @@ export default function ZulaNav() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <LinkContainer to="/account"><Nav.Link>Accounts</Nav.Link></LinkContainer>
-                        <LinkContainer to="/books"><Nav.Link>Books</Nav.Link></LinkContainer>
+                        <LinkContainer to="/account"><Nav.Link><small className="text-muted">(Customer)</small> Accounts</Nav.Link></LinkContainer>
+                        <LinkContainer to="/books"><Nav.Link><small className="text-muted">(Customer)</small> Books</Nav.Link></LinkContainer>
+                        <LinkContainer to="/new/translation"><Nav.Link><small className="text-muted">(Author)</small> New Translation</Nav.Link></LinkContainer>
                     </Nav>
                     <Nav>
                         <Navbar.Brand>The Reading Tribe</Navbar.Brand>

@@ -3,6 +3,10 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
+    "@jsonforms/core": "^2.5.2",
+    "@jsonforms/material-renderers": "^2.5.2",
+    "@jsonforms/react": "^2.5.2",
+    "@jsonforms/vanilla-renderers": "^2.5.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
