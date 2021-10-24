@@ -21,5 +21,5 @@ jobs:
     - name: Build
       run: cd src/api && go build -v ./cmd/api
 
-    - name: Test
-      run: cd src/api && go test -v ./pkg/api/test
+    # - name: Test
+    #   run: cd src/api && go test -v ./pkg/api/test
