@@ -4,6 +4,8 @@ Zula is on a mission to amplify diversity and inclusion in children's libraries 
 
 We are aiming to develop an open-source + premium subscription online library for inclusive childrens books.
 
+Find out more on our [wiki](https://github.com/reading-tribe/zula/wiki)
+
 ## Project Setup
 
 - Backend written in Golang
