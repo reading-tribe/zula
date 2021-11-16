@@ -10,14 +10,14 @@ import (
 
 func NewClient() (*mongo.Client, *context.Context, context.CancelFunc, error) {
 	ctx, cancel := context.WithCancel(context.Background())
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://mongo:27017"))
 	return client, &ctx, cancel, err
 }
 
 func SeedDB() {
 	ctx, cancel := context.WithTimeout(context.Background(), 100*time.Second)
 	defer cancel()
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
+	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://mongo:27017"))
 
 	collection := client.Database("zula").Collection("books")
 	collection.Drop(ctx)

@@ -1,6 +1,8 @@
 package api
 
 import (
+	"fmt"
+
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -34,10 +36,10 @@ func NewServer(
 	return s
 }
 
-/*func dumpReqAndRes(c echo.Context, reqBody, resBody []byte) {
+func dumpReqAndRes(c echo.Context, reqBody, resBody []byte) {
 	fmt.Printf("Request Body: %v", string(reqBody))
 	fmt.Printf("Response Body: %v", string(resBody))
-}*/
+}
 
 func setupMiddleware(s *Server) {
 	e := s.EchoServer
@@ -51,7 +53,7 @@ func setupMiddleware(s *Server) {
 		AllowOrigins: []string{"http://localhost", "http://localhost:3000", "http://localhost:8080"},
 		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
 	}))
-	// e.Use(middleware.BodyDump(dumpReqAndRes))
+	e.Use(middleware.BodyDump(dumpReqAndRes))
 	e.Use(middleware.BodyLimit("2M"))
 }
 

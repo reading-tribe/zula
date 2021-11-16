@@ -25,7 +25,7 @@ func (s *Server) GetAccount(c echo.Context) error {
 	var result Account
 	err := collection.FindOne(*s.MongoContext, filter, &options.FindOneOptions{}).Decode(&result)
 	if err != nil {
-		return fmt.Errorf("unable to get account with ID")
+		return err
 	}
 
 	return c.JSON(http.StatusOK, result)
@@ -38,12 +38,12 @@ func (s *Server) ListAccounts(c echo.Context) error {
 
 	cursor, err := collection.Find(*s.MongoContext, filter, &options.FindOptions{})
 	if err != nil {
-		return fmt.Errorf("unable to get accounts")
+		return err
 	}
 
 	var result AccountsList
 	if err = cursor.All(*s.MongoContext, &result.Items); err != nil {
-		return fmt.Errorf("unable to get accounts")
+		return err
 	}
 
 	return c.JSON(http.StatusOK, result)

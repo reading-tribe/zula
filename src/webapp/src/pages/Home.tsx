@@ -7,6 +7,7 @@ export default function Home() {
         fetch("http://localhost:1323/api/v1/users")
             .then(data => data.json())
             .then(jsonData => setData(jsonData))
+            .catch(error => console.error(error))
     }, [])
     return (
         <ZulaLayoutThreeColumn content={

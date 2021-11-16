@@ -10,6 +10,7 @@ export default function Books() {
         fetch("http://localhost:1323/api/v1/books")
             .then(data => data.json())
             .then(jsonData => setData(jsonData))
+            .catch(error => console.error(error))
     }, [])
     return (
         <ZulaLayoutThreeColumn content={

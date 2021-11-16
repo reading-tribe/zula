@@ -10,6 +10,7 @@ export default function Account() {
         fetch("http://localhost:1323/api/v1/accounts")
             .then(data => data.json())
             .then(jsonData => setData(jsonData))
+            .catch(error => console.error(error))
     }, [])
     return (
         <ZulaLayoutThreeColumn content={

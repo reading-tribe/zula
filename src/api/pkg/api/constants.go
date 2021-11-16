@@ -7,6 +7,6 @@ func defaultConstants() Constants {
 		UsersAPIEndpoint:    "/users",
 		AccountsAPIEndpoint: "/accounts",
 		BooksAPIEndpoint:    "/books",
-		LogStringFormat:     "time=${time_rfc3339} host=${host} method=${method} uri=${uri} status=${status}\n",
+		LogStringFormat:     "time=${time_rfc3339} host=${host} method=${method} uri=${uri} status=${status} error=${error}\n",
 	}
 }

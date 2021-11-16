@@ -30,6 +30,7 @@ export default function Read() {
                     }
                 }
             })
+            .catch(error => console.error(error))
     }, [id, locale])
     
     return (

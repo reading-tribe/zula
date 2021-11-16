@@ -25,7 +25,7 @@ func (s *Server) GetUser(c echo.Context) error {
 	var result User
 	err := collection.FindOne(*s.MongoContext, filter, &options.FindOneOptions{}).Decode(&result)
 	if err != nil {
-		return fmt.Errorf("unable to get user with ID")
+		return err
 	}
 
 	return c.JSON(http.StatusOK, result)
@@ -38,12 +38,12 @@ func (s *Server) ListUsers(c echo.Context) error {
 
 	cursor, err := collection.Find(*s.MongoContext, filter, &options.FindOptions{})
 	if err != nil {
-		return fmt.Errorf("unable to get users")
+		return err
 	}
 
 	var result UsersList
 	if err = cursor.All(*s.MongoContext, &result.Items); err != nil {
-		return fmt.Errorf("unable to get users")
+		return err
 	}
 
 	return c.JSON(http.StatusOK, result)

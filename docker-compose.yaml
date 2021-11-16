@@ -4,18 +4,32 @@ services:
   api:
     build:
       context: ./src/api
+      dockerfile: Dockerfile.api
     image: zula-api
     ports:
       - "1323:1323"
-    links:
+    depends_on:
+      - mongo
+      - seeder
+
+  seeder:
+    build:
+      context: ./src/api
+      dockerfile: Dockerfile.seeder
+    image: zula-seeder
+    depends_on:
       - mongo
 
   webapp:
     build:
       context: ./src/webapp
     image: zula-webapp
+    environment:
+      - REACT_APP_API_URL=api
     ports:
       - "8080:80"
+    depends_on:
+      - api
 
   mongo:
     image: mongo:latest

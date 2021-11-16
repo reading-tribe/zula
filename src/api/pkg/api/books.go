@@ -25,7 +25,7 @@ func (s *Server) GetBook(c echo.Context) error {
 	var result Book
 	err := collection.FindOne(*s.MongoContext, filter, &options.FindOneOptions{}).Decode(&result)
 	if err != nil {
-		return fmt.Errorf("unable to get book with ID")
+		return err
 	}
 
 	return c.JSON(http.StatusOK, result)
@@ -38,12 +38,12 @@ func (s *Server) ListBooks(c echo.Context) error {
 
 	cursor, err := collection.Find(*s.MongoContext, filter, &options.FindOptions{})
 	if err != nil {
-		return fmt.Errorf("unable to get books")
+		return err
 	}
 
 	var result BooksList
 	if err = cursor.All(*s.MongoContext, &result.Items); err != nil {
-		return fmt.Errorf("unable to get books")
+		return err
 	}
 
 	return c.JSON(http.StatusOK, result)
@@ -65,12 +65,12 @@ func (s *Server) ListBooksInLocale(c echo.Context) error {
 
 	cursor, err := collection.Find(*s.MongoContext, filter, &options.FindOptions{})
 	if err != nil {
-		return fmt.Errorf("unable to get books")
+		return err
 	}
 
 	var result BooksList
 	if err = cursor.All(*s.MongoContext, &result.Items); err != nil {
-		return fmt.Errorf("unable to get books")
+		return err
 	}
 
 	return c.JSON(http.StatusOK, result)
