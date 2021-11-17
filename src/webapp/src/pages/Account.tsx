@@ -6,11 +6,14 @@ import { AccountsList } from "../models";
 
 export default function Account() {
     const [data, setData] = useState<AccountsList>()
+    const { REACT_APP_API_URL } = process.env;
     useEffect(() => {
-        fetch("http://localhost:1323/api/v1/accounts")
-            .then(data => data.json())
-            .then(jsonData => setData(jsonData))
-            .catch(error => console.error(error))
+        if (REACT_APP_API_URL) {
+            fetch(REACT_APP_API_URL+"/accounts")
+                .then(data => data.json())
+                .then(jsonData => setData(jsonData))
+                .catch(error => console.error(error))
+        }
     }, [])
     return (
         <ZulaLayoutThreeColumn content={

@@ -15,6 +15,14 @@ type Constants struct {
 	AccountsAPIEndpoint string
 	BooksAPIEndpoint    string
 	LogStringFormat     string
+	ZulaDatabase        string
+	BooksCollection     string
+	UsersCollection     string
+	AccountsCollection  string
+}
+
+type Environment struct {
+	MongoConnectionString string
 }
 
 type Server struct {

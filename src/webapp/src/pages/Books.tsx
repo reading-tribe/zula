@@ -6,11 +6,14 @@ import { BooksList } from "../models";
 
 export default function Books() {
     const [data, setData] = useState<BooksList>()
+    const { REACT_APP_API_URL } = process.env;
     useEffect(() => {
-        fetch("http://localhost:1323/api/v1/books")
-            .then(data => data.json())
-            .then(jsonData => setData(jsonData))
-            .catch(error => console.error(error))
+        if (REACT_APP_API_URL) {
+            fetch(REACT_APP_API_URL+"/books")
+                .then(data => data.json())
+                .then(jsonData => setData(jsonData))
+                .catch(error => console.error(error))
+        }
     }, [])
     return (
         <ZulaLayoutThreeColumn content={

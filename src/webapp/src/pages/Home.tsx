@@ -3,11 +3,14 @@ import ZulaLayoutThreeColumn from "../components/ZulaLayoutThreeColumn";
 
 export default function Home() {
     const [data, setData] = useState()
+    const { REACT_APP_API_URL } = process.env;
     useEffect(() => {
-        fetch("http://localhost:1323/api/v1/users")
-            .then(data => data.json())
-            .then(jsonData => setData(jsonData))
-            .catch(error => console.error(error))
+        if (REACT_APP_API_URL) {
+            fetch(REACT_APP_API_URL+"/users")
+                .then(data => data.json())
+                .then(jsonData => setData(jsonData))
+                .catch(error => console.error(error))
+        }
     }, [])
     return (
         <ZulaLayoutThreeColumn content={

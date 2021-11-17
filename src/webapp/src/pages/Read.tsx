@@ -17,20 +17,24 @@ export default function Read() {
     const query = new URLSearchParams(useLocation().search)
     const id = query.get("id")
     const locale = query.get("locale")
+
+    const { REACT_APP_API_URL } = process.env;
     
     useEffect(() => {
-        fetch(`http://localhost:1323/api/v1/books/${id}`)
-            .then(data => data.json())
-            .then(jsonData => {
-                const book = jsonData as Book
-                for (const bookTranslation of book.translations) {
-                    if (bookTranslation.locale === locale){
-                        setData(bookTranslation)
-                        break
+        if (REACT_APP_API_URL) {
+            fetch(REACT_APP_API_URL+`/books/${id}`)
+                .then(data => data.json())
+                .then(jsonData => {
+                    const book = jsonData as Book
+                    for (const bookTranslation of book.translations) {
+                        if (bookTranslation.locale === locale){
+                            setData(bookTranslation)
+                            break
+                        }
                     }
-                }
-            })
-            .catch(error => console.error(error))
+                })
+                .catch(error => console.error(error))
+        }
     }, [id, locale])
     
     return (
