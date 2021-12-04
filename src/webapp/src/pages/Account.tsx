@@ -12,7 +12,7 @@ export default function Account() {
             fetch(REACT_APP_API_URL+"/accounts")
                 .then(data => data.json())
                 .then(jsonData => setData(jsonData))
-                .catch(error => console.error(error))
+                .catch(err => console.error(err))
         }
     }, [])
     return (
