@@ -11,7 +11,9 @@ COPY package-lock.json /app/package-lock.json
 
 RUN echo $REACT_APP_API_URL
 
-RUN npm i && REACT_APP_API_URL=$REACT_APP_API_URL npm run build
+RUN npm i
+
+RUN REACT_APP_API_URL=$REACT_APP_API_URL npm run build
 
 FROM nginx:stable-alpine
 
