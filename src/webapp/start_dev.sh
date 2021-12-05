@@ -12,5 +12,12 @@ if [ "$command" = "webapp" ]; then
     exit 0
 fi
 
+if [ "$command" = "storybook" ]; then
+    echo "Command: $command";
+    echo "Running storybook";
+    npm run storybook
+    exit 0
+fi
+
 echo "Unrecognised command"
 exit 1
