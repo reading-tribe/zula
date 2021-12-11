@@ -2,6 +2,7 @@
   "name": "zula-web-frontend",
   "version": "0.2.0",
   "private": true,
+  "homepage": "https://reading-tribe.github.io/zula",
   "dependencies": {
     "@jsonforms/core": "^2.5.2",
     "@jsonforms/material-renderers": "^2.5.2",
@@ -34,7 +35,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static"
   },
   "eslintConfig": {
     "extends": [
