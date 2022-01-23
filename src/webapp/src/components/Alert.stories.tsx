@@ -50,14 +50,14 @@ Light.args = {
   variant: "light",
 };
 
-export const Dark = Template.bind({});
-
-Dark.args = {
-  variant: "dark",
-};
-
 export const Info = Template.bind({});
 
 Info.args = {
   variant: "info",
+};
+
+export const Dark = Template.bind({});
+
+Dark.args = {
+  variant: "dark",
 };
