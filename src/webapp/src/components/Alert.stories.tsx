@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof Alert>;
 
 const Template: ComponentStory<typeof Alert> = (args) => (
-  <Alert {...args}>Book</Alert>
+  <Alert {...args}> Book </Alert>
 );
 
 export const Primary = Template.bind({});
