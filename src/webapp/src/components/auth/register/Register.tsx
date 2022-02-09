@@ -3,18 +3,18 @@ import "../../../Styles/register/Register.css";
 
 export const Register = () => {
   return (
-    <div className="Form my-3 mx-4">
-      <div className="container">
-        <div className="row no-gutters">
+    <div className="Form from-reg">
+      <div className="container h-100">
+        <div className="row no-gutters h-100">
           <h1 className="col-lg-4 bg-secondary">illustrations</h1>
-          <div className="col-lg-8 px-5 pt-5">
-            <h1 className="large text-secondary py-3">Join Our Tribe</h1>
+          <div className="col-lg-8">
+            <h1 className="large text-secondary ">Join Our Tribe</h1>
             <p className=" text-secondary fw-light"> Create Your Account</p>
             <form>
-              <div className="form-row">
-                <div className="col-lg-7 ">
+              <div className="form-row ">
+                <div className="col-lg-7 w-100">
                   <input
-                    className="form-control  my-3 p-3"
+                    className="form-control my-3 p-3"
                     type="text"
                     placeholder="Name"
                     name="name"
@@ -22,7 +22,7 @@ export const Register = () => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col-lg-7">
+                <div className="col-lg-7 w-100">
                   <input
                     className="form-control  my-3 p-3"
                     type="text"
@@ -32,7 +32,7 @@ export const Register = () => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col-lg-7">
+                <div className="col-lg-7 w-100">
                   <input
                     className="form-control  my-3 p-3"
                     type="password"
@@ -42,7 +42,7 @@ export const Register = () => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col-lg-7">
+                <div className="col-lg-7 w-100">
                   <input
                     className="form-control  my-3 p-3"
                     type="text"
@@ -52,7 +52,7 @@ export const Register = () => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col-lg-7">
+                <div className="col-lg-7 w-100">
                   <input
                     className="form-control  my-3 p-3"
                     type="text"
@@ -62,7 +62,7 @@ export const Register = () => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col-lg-7">
+                <div className="col-lg-7 w-100">
                   <input
                     className="form-control  my-3 p-3"
                     type="text"
@@ -72,7 +72,7 @@ export const Register = () => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col-lg-7">
+                <div className="col-lg-7 w-100">
                   <input
                     className="form-control  my-3 p-3"
                     type="text"
@@ -82,8 +82,8 @@ export const Register = () => {
                 </div>
               </div>
               <div className="form-row">
-                <div className="col-lg-7">
-                  <button className="btn bg-info my-3 p-4 btn">
+                <div className="col-lg-7 w-100">
+                  <button className="btn bg-secondary my-2 p-3 btn-reg">
                     I am All set
                   </button>
                 </div>

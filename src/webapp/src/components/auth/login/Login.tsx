@@ -3,7 +3,7 @@ import "../../../Styles/login/Login.css";
 
 export const Login = () => {
   return (
-    <div className="d-flex justify-content-between">
+    <div className="d-flex justify-content-between login">
       <div className="col-lg-4 bg-secondary">
         <h1 className="text-align-center">illustrations</h1>
       </div>
