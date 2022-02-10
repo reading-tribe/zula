@@ -59,11 +59,11 @@ If necessary, install go dependencies
 
 Run the seeder in development mode (if needed)
 
-    $ ./start-dev -c seeder
+    $ ./start_dev.sh -c seeder
 
 Once it has completed, start the api in development mode
 
-    $ ./start-dev -c api
+    $ ./start_dev.sh -c api
 
 In another terminal we can start the webapp in local development mode
 
@@ -75,6 +75,6 @@ If necessary, install NPM dependencies
 
 Run the webapp server in local development mode
 
-    $ ./start-dev -c webapp
+    $ ./start_dev.sh -c webapp
 
 At this point the webapp should be accessible at `localhost:3000` or use the API at `localhost:1323`
