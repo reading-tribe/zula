@@ -34,7 +34,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook",
@@ -75,6 +74,9 @@
     "@storybook/addon-links": "^6.4.7",
     "@storybook/node-logger": "^6.4.7",
     "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.4.7"
+    "@storybook/react": "^6.4.7",
+    "babel-jest": "^27.4.6",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.4.7"
   }
 }
