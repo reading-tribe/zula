@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../Styles/register/Register.css";
+import "../../../styles/register/Register.css";
 
 export const Register = () => {
   return (
@@ -48,16 +48,6 @@ export const Register = () => {
                     type="text"
                     placeholder="Reader's age"
                     name="age"
-                  />
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="col-lg-7 w-100">
-                  <input
-                    className="form-control  my-3 p-3"
-                    type="text"
-                    placeholder="Reader's ethnic group"
-                    name="group"
                   />
                 </div>
               </div>

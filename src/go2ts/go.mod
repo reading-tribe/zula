@@ -1,4 +1,4 @@
-module github.com/reading-tribe/zula/go2ts
+module github.com/reading-tribe/zula/src/go2ts
 
 go 1.17
 

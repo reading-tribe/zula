@@ -1,5 +1,5 @@
 import React from "react";
-import "../../../Styles/login/Login.css";
+import "../../../styles/login/Login.css";
 
 export const Login = () => {
   return (
@@ -17,10 +17,10 @@ export const Login = () => {
         </div>
         <div className="d-grid gap-3 mt-5 p-3">
           <button className="btn btn-dark btn-lg " type="button">
-            I am Already a member
+            I am already a member
           </button>
           <button className="btn  btn-secondary btn-lg" type="button">
-            view as Guess
+            View as a guest
           </button>
           <button className="btn btn-light btn-lg" type="button">
             Join our tribe
