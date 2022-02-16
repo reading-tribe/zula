@@ -2,7 +2,6 @@ import {
     Row,
     Col
  } from "react-bootstrap"
-import ZulaNav from "./ZulaNav";
 
 interface ZulaLayoutThreeColumnProps {
     content: any
@@ -11,7 +10,6 @@ interface ZulaLayoutThreeColumnProps {
 export default function ZulaLayoutThreeColumn(props: ZulaLayoutThreeColumnProps) {
     return (
         <>
-            <ZulaNav/>
             <div className="pt-3">
                 <Row className="justify-content-md-center">
                     <Col></Col>
