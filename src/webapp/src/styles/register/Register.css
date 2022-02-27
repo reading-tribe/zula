@@ -1,11 +1,121 @@
-.from-reg {
-  height: 800px;
+.register-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  background-color: #00263a;
+}
+
+.register-container .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80vh;
+}
+
+.register-container .register-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #00263a;
   width: 100%;
 }
 
-.btn-reg {
-  border: none;
-  outline: none;
-  width: 100%;
+.register-container .register-buttons a {
+  text-decoration: none;
+  color: #a0dab3;
+  font-size: 0.93rem;
+}
+
+.register-container .register-buttons a:hover {
+  background-color: #a0dab3;
+  color: #00263a;
+}
+
+.register-container .button-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80%;
+  padding: 1.8rem 2.5rem;
+  width: 35%;
+  border: 1px solid #a0dab3;
+  border-radius: 6.25rem;
+}
+
+.register-container .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80%;
+  padding: 1.8rem 2.5rem;
+  width: 60%;
+  border: 1px solid #a0dab3;
+  border-radius: 6.25rem;
+}
+
+.register-container h1 {
+  font-family: Futura;
+  font-size: 4.37rem;
+  line-height: 5rem;
+  color: white;
+}
+
+.register-container h3 {
+  font-family: Futura;
+  font-size: 4.37rem;
+  line-height: 3rem;
+  color: #a0dab3;
+}
+
+.register-container p {
+  font-family: Futura;
+  font-size: 1.56rem;
+  line-height: 2.18rem;
+  color: #a0dab3;
+}
+
+.register-container small {
+  font-family: Futura;
+  font-size: 1rem;
+  line-height: 0.6rem;
+  color: white;
 }
 /*# sourceMappingURL=Register.css.map */
