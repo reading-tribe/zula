@@ -113,6 +113,9 @@ const styles = StyleSheet.create({
   loginButton: {
   },
   signupButton: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
     backgroundColor: '#A0DAB3'
   },
   loginText: {

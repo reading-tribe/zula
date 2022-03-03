@@ -110,7 +110,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   loginButton: {
-    justifyContent: 'center',
+    flex: 1,
+    justifyContent: 'flex-start',
     alignItems: 'center',
     alignSelf: 'center',
     height: 56,
