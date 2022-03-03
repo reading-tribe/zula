@@ -9,6 +9,7 @@ const Login = ({ navigation }: RootStackScreenProps<'Login'>) => {
       <Text style={styles.subtitle}>The Reading Tribe</Text>
       <Text style={styles.description}>Welcome!</Text>
       <Text style={[styles.description, styles.subText]}>Its Good To See You.</Text>
+      <Text style={styles.label}>Name</Text>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.inputs}
@@ -19,6 +20,7 @@ const Login = ({ navigation }: RootStackScreenProps<'Login'>) => {
         />
       </View>
 
+      <Text style={styles.label}>Password</Text>
       <View style={[styles.inputContainer, styles.passwordField]}>
         <TextInput
           style={styles.inputs}
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    marginTop: 50
+    marginTop: 40
   },
   subtitle: {
     fontSize: 24,
@@ -76,6 +78,14 @@ const styles = StyleSheet.create({
   },
   subText: {
     marginBottom: 30,
+  },
+  label:{
+    textAlign: 'left',
+    justifyContent: 'flex-start',
+    color: 'white', 
+    marginBottom: 5, 
+    alignSelf: 'flex-start',
+    fontSize: 15, 
   },
   inputContainer: {
     backgroundColor: '#FFFFFF',

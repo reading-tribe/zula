@@ -8,6 +8,7 @@ const Signup = ({ navigation }: RootStackScreenProps<'Signup'>) => {
       <Text style={styles.title}>Zula</Text>
       <Text style={styles.subtitle}>The Reading Tribe</Text>
       <Text style={styles.description}>Join Our Reading Tribe</Text>
+      <Text style={styles.label}>Name</Text>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.inputs}
@@ -18,6 +19,7 @@ const Signup = ({ navigation }: RootStackScreenProps<'Signup'>) => {
         />
       </View>
 
+      <Text style={styles.label}>Email</Text>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.inputs}
@@ -28,6 +30,7 @@ const Signup = ({ navigation }: RootStackScreenProps<'Signup'>) => {
         />
       </View>
 
+      <Text style={styles.label}>Password</Text>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.inputs}
@@ -69,7 +72,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    marginTop: 50
+    marginTop: 40
   },
   subtitle: {
     fontSize: 24,
@@ -82,6 +85,14 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     lineHeight: 69,
     fontWeight: 'bold',
+  },
+  label:{
+    textAlign: 'left',
+    justifyContent: 'flex-start',
+    color: 'white', 
+    marginBottom: 5, 
+    alignSelf: 'flex-start',
+    fontSize: 15, 
   },
   inputContainer: {
     backgroundColor: '#FFFFFF',
