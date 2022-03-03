@@ -3,11 +3,6 @@ import { Text, View } from '../components/Themed';
 import { RootStackScreenProps } from '../../types';
 
 const Signup = ({ navigation }: RootStackScreenProps<'Signup'>) => {
-
-  const signup = () => {
-    console.log('SIGNUP SUCCESSFUL')
-  };
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Zula</Text>
@@ -53,7 +48,7 @@ const Signup = ({ navigation }: RootStackScreenProps<'Signup'>) => {
 
         <TouchableHighlight
           style={[styles.button, styles.signupButton]}
-          onPress={() => signup()}
+          onPress={() => navigation.navigate('Home')}
         >
           <Text style={styles.loginText}>Done</Text>
         </TouchableHighlight>
@@ -67,23 +62,24 @@ export default Signup;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    /*  justifyContent: 'center', */
+    justifyContent: 'center',
     alignItems: 'center',
+    padding: 10,
   },
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    marginTop: 140
+    marginTop: 50
   },
   subtitle: {
     fontSize: 24,
-    marginBottom: 50,
+    marginBottom: 30,
     lineHeight: 30
   },
   description: {
     color: '#ffffff',
-    fontSize: 60,
-    marginBottom: 50,
+    fontSize: 55,
+    marginBottom: 30,
     lineHeight: 69,
     fontWeight: 'bold',
   },
@@ -91,9 +87,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 5,
     borderBottomWidth: 1,
-    width: 620,
-    height: 60,
-    marginBottom: 50,
+    marginBottom: 30,
     flexDirection: 'row',
     alignItems: 'center'
   },
@@ -102,7 +96,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   buttonContainer: {
-    display: 'flex',
     flexDirection: 'row',
     marginBottom: 20,
   },
@@ -118,10 +111,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   loginButton: {
-    width: 239,
   },
   signupButton: {
-    width: 355,
     backgroundColor: '#A0DAB3'
   },
   loginText: {

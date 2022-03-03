@@ -3,11 +3,6 @@ import { Text, View } from '../components/Themed';
 import { RootStackScreenProps } from '../../types';
 
 const Login = ({ navigation }: RootStackScreenProps<'Login'>) => {
-
-  const login = () => {
-    console.log('SIGNUP SUCCESSFUL')
-  };
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Zula</Text>
@@ -44,7 +39,7 @@ const Login = ({ navigation }: RootStackScreenProps<'Login'>) => {
 
         <TouchableHighlight
           style={styles.loginButton}
-          onPress={() => login()}
+          onPress={() => navigation.navigate('Home')}
         >
           <Text style={styles.loginText}>Login</Text>
         </TouchableHighlight>
@@ -60,34 +55,32 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 10,
   },
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    marginTop: 140
+    marginTop: 50
   },
   subtitle: {
     fontSize: 24,
-    marginBottom: 50,
+    marginBottom: 30,
     lineHeight: 30
   },
   description: {
     color: '#ffffff',
-    fontSize: 60,
+    fontSize: 55,
     textAlign: 'center',
-    width: 620,
     lineHeight: 69,
     fontWeight: 'bold',
   },
   subText: {
-    marginBottom: 50,
+    marginBottom: 30,
   },
   inputContainer: {
     backgroundColor: '#FFFFFF',
     borderRadius: 5,
     borderBottomWidth: 1,
-    width: 620,
-    height: 60,
     marginBottom: 50,
     flexDirection: 'row',
     alignItems: 'center'
@@ -103,16 +96,17 @@ const styles = StyleSheet.create({
     flex: 1
   },
   buttonContainer: {
-    display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 10,
   },
   resetPassword: {
+    flex: 1,
     textDecorationLine: 'underline',
     textDecorationStyle: 'solid',
     textDecorationColor: '#A0DAB3',
-    width: 239,
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
     marginTop: 5,
   },
   loginButton: {
@@ -120,7 +114,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     height: 56,
-    width: 265,
+    width: 100,
     backgroundColor: '#A0DAB3',
     margin: 4,
     padding: 20,
