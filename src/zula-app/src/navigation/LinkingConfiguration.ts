@@ -15,19 +15,23 @@ const linking: LinkingOptions<RootStackParamList> = {
     screens: {
       Root: {
         screens: {
-          PageOne: {
+          Home: {
             screens: {
-              PageOneScreen: 'one',
+              HomeScreen: '',
             },
           },
-          PageTwo: {
+          Login: {
             screens: {
-              PageTwoScreen: 'two',
+              LoginScreen: 'login',
+            },
+          },
+          Signup: {
+            screens: {
+              LoginScreen: 'signup',
             },
           },
         },
       },
-      Modal: 'modal',
       NotFound: '*',
     },
   },
