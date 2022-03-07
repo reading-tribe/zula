@@ -9,27 +9,6 @@ services:
       container_name: nuclio-dashboard
       image: 'quay.io/nuclio/dashboard:stable-amd64'
 
-  seeder:
-    build:
-      context: ./src/api
-      dockerfile: Dockerfile.seeder
-    image: zula-seeder
-    environment:
-      - MONGO_CONNECTION_STRING=mongodb://mongo:27017
-    depends_on:
-      - mongo
-
-  webapp:
-    build:
-      context: ./src/webapp
-      args:
-        - REACT_APP_API_URL=http://localhost:1323/api/v1
-    image: zula-webapp
-    ports:
-      - "8080:80"
-    depends_on:
-      - api
-
   mongo:
     image: mongo:latest
     ports:
