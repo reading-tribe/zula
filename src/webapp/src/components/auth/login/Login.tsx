@@ -3,29 +3,56 @@ import "../../../styles/login/Login.css";
 
 export const Login = () => {
   return (
-    <div className="d-flex justify-content-between login">
-      <div className="col-lg-4 bg-secondary">
-        <h1 className="text-align-center">illustrations</h1>
-      </div>
-      <div className="d-flex flex-column justify-content-center col-lg-8">
-        <div className="d-flex flex-column align-items-center mb-5">
-          <h1>
-            Welcome To <br />
-            Zula the Reading Tribe!
+    <div className="login-container">
+      <div className="container">
+        <div>
+          <h3 className="fw-bold text-center fst-normal">Zula</h3>
+          <p className="text-center fst-normal">the Reading Tribe</p>
+        </div>
+        <div className="mb-5">
+          <h1 className="fw-bold text-center fst-normal">
+            Welcome!
+            <br /> Its Good To See You.
           </h1>
-          <p className="fw-light">It is good to see you my friend</p>
         </div>
-        <div className="d-grid gap-3 mt-5 p-3">
-          <button className="btn btn-dark btn-lg " type="button">
-            I am already a member
-          </button>
-          <button className="btn  btn-secondary btn-lg" type="button">
-            View as a guest
-          </button>
-          <button className="btn btn-light btn-lg" type="button">
-            Join our tribe
-          </button>
-        </div>
+        <form className="d-flex flex-column align-items-center w-50">
+          <div className=" w-100">
+            <div>
+              <small>Name</small>
+              <input
+                className="form-control my-3 p-3"
+                type="text"
+                placeholder="Name"
+                name="name"
+                required
+              />
+            </div>
+          </div>
+          <div className="w-100">
+            <div>
+              <small>Password</small>
+              <input
+                className="form-control my-3 p-3"
+                type="password"
+                placeholder="Password"
+                name="password"
+                required
+              />
+            </div>
+          </div>
+          <div className="w-100">
+            <div>
+              <small className="small-dark">
+                Did you forget your password?
+              </small>
+            </div>
+          </div>
+          <div className="login-buttons mt-5 ">
+            <a href="/" className="button fw-bold ">
+              login
+            </a>
+          </div>
+        </form>
       </div>
     </div>
   );

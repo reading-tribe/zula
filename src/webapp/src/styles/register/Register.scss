@@ -1,9 +1,55 @@
-.from-reg {
-    height: 800px;
+@import "../variables";
+@import "../mixins";
+
+.register-container {
+  @include flex-center(100vh);
+  background-color: $primaryPage;
+  .container {
+    @include flex(column, space-around, center);
+    height: 80vh;
+  }
+
+  .register-buttons {
+    @include flex(row, space-between, center);
+    background-color: $primaryPage;
     width: 100%;
-}
-.btn-reg {
-    border: none;
-    outline: none;
-    width: 100%;
+    a {
+      text-decoration: none;
+      color: $secondPage;
+      font-size: 0.93rem;
+      &:hover {
+        background-color: $secondPage;
+        color: $primaryPage;
+      }
+    }
+  }
+
+  .button-login {
+    @include flex-center(80%);
+    padding: 1.8rem 2.5rem;
+    width: 35%;
+    border: 1px solid $secondPage;
+    border-radius: 6.25rem;
+  }
+
+  .button {
+    @include flex-center(80%);
+    padding: 1.8rem 2.5rem;
+    width: 60%;
+    border: 1px solid $secondPage;
+    border-radius: 6.25rem;
+  }
+  h1 {
+    @include font(Futura, 4.37rem, 5rem, white);
+  }
+  h3 {
+    @include font(Futura, 4.37rem, 3rem, $secondPage);
+  }
+  p {
+    @include font(Futura, 1.56rem, 2.18rem, $secondPage);
+  }
+
+  small {
+    @include font(Futura, 1rem, 0.6rem, white);
+  }
 }
