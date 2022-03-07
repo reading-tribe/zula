@@ -1,18 +1,13 @@
-version: "3"
-
+version: '3.3'
 services:
-  api:
-    build:
-      context: ./src/api
-      dockerfile: Dockerfile.api
-    image: zula-api
-    ports:
-      - "1323:1323"
-    environment:
-      - MONGO_CONNECTION_STRING=mongodb://mongo:27017
-    depends_on:
-      - mongo
-      - seeder
+  nuclio:
+      ports:
+          - '8070:8070'
+      volumes:
+          - '/var/run/docker.sock:/var/run/docker.sock'
+          - '/tmp:/tmp'
+      container_name: nuclio-dashboard
+      image: 'quay.io/nuclio/dashboard:stable-amd64'
 
   seeder:
     build:
