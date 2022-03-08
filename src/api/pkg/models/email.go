@@ -8,7 +8,7 @@ func (e *Email) String() string {
 	return string(*e)
 }
 
-func (e *Email) Valid() bool {
+func (e *Email) Validate() error {
 	_, err := mail.ParseAddress(e.String())
-	return err == nil
+	return err
 }
