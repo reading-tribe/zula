@@ -1,140 +1,94 @@
-import { StyleSheet, TextInput, TouchableOpacity, TouchableHighlight } from 'react-native';
-import { Text, View } from '../components/Themed';
-import { RootStackScreenProps } from '../../types';
+import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { RootStackScreenProps } from "../../types";
+import { Text, View } from "../components/Themed";
+import style from '../styles/main'
 
-const Login = ({ navigation }: RootStackScreenProps<'Login'>) => {
+const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Zula</Text>
-      <Text style={styles.subtitle}>The Reading Tribe</Text>
-      <Text style={styles.description}>Welcome!</Text>
-      <Text style={[styles.description, styles.subText]}>Its Good To See You.</Text>
-      <Text style={styles.label}>Name</Text>
-      <View style={styles.inputContainer}>
+    <View style={style.container}>
+      <Text style={[style.title, styles.title]}>Zula</Text>
+      <Text style={[style.subtitle, styles.subtitle]}>The Reading Tribe</Text>
+      <Text style={style.description}>Welcome!</Text>
+      <Text style={[style.description, styles.subText]}>Its Good To See You.</Text>
+      <Text style={style.inPutlabel}>Name</Text>
+      <View style={style.inputContainer}>
         <TextInput
           style={styles.inputs}
-          placeholder='Name'
-          keyboardType='default'
-          underlineColorAndroid='transparent'
-          autoCapitalize='none'
+          placeholder="Name"
+          keyboardType="default"
+          underlineColorAndroid="transparent"
+          autoCapitalize="none"
         />
       </View>
 
-      <Text style={styles.label}>Password</Text>
-      <View style={[styles.inputContainer, styles.passwordField]}>
+      <Text style={style.inPutlabel}>Password</Text>
+      <View style={[style.inputContainer, styles.passwordField]}>
         <TextInput
           style={styles.inputs}
-          placeholder='Password'
+          placeholder="Password"
           secureTextEntry={true}
-          underlineColorAndroid='transparent'
-          autoCapitalize='none'
+          underlineColorAndroid="transparent"
+          autoCapitalize="none"
         />
       </View>
 
       <View style={styles.buttonContainer} >
       <TouchableOpacity
           style={styles.resetPassword}
-          onPress={() => navigation.navigate('Signup')}
+          onPress={() => navigation.navigate("Signup")}
         >
           <Text>Did you forget your Password?</Text>
         </TouchableOpacity>
-
-        <TouchableHighlight
-          style={styles.loginButton}
-          onPress={() => navigation.navigate('Home')}
+        <TouchableOpacity
+          style={[style.button, styles.loginButton]}
+          onPress={() => navigation.navigate("Dashboard")}
         >
           <Text style={styles.loginText}>Login</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </View>
   );
 }
 export default Login;
 
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-  },
   title: {
-    fontSize: 36,
-    fontWeight: 'bold',
     marginTop: 40
   },
   subtitle: {
-    fontSize: 24,
     marginBottom: 30,
-    lineHeight: 30
-  },
-  description: {
-    color: '#ffffff',
-    fontSize: 55,
-    textAlign: 'center',
-    lineHeight: 69,
-    fontWeight: 'bold',
   },
   subText: {
     marginBottom: 30,
   },
-  label:{
-    textAlign: 'left',
-    justifyContent: 'flex-start',
-    color: 'white', 
-    marginBottom: 5, 
-    alignSelf: 'flex-start',
-    fontSize: 15, 
-  },
-  inputContainer: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 5,
-    borderBottomWidth: 1,
-    marginBottom: 50,
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
   passwordField: {
     marginBottom: 20,
   },
-  'inputContainer:last-child': {
-    marginBottom: 30,
-  },
   inputs: {
     height: 60,
-    flex: 1
+    flex: 1,
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginBottom: 10,
   },
   resetPassword: {
     flex: 1,
-    textDecorationLine: 'underline',
-    textDecorationStyle: 'solid',
-    textDecorationColor: '#A0DAB3',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    textDecorationLine: "underline",
+    textDecorationStyle: "solid",
+    textDecorationColor: "#A0DAB3",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
     marginTop: 5,
   },
   loginButton: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    alignSelf: 'center',
-    height: 56,
     width: 100,
-    backgroundColor: '#A0DAB3',
-    margin: 4,
-    padding: 20,
-    borderRadius: 100,
+    backgroundColor: "#A0DAB3",
     marginTop: 20,
-    borderWidth: 2,
-    borderColor: '#A0DAB3',
   },
   loginText: {
-    color: 'black'
+    color: "#00263A"
   }
 });

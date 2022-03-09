@@ -1,15 +1,16 @@
-import { StyleSheet, TextInput, TouchableOpacity, TouchableHighlight } from 'react-native';
-import { Text, View } from '../components/Themed';
-import { RootStackScreenProps } from '../../types';
+import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { RootStackScreenProps } from "../../types";
+import { Text, View } from "../components/Themed";
+import style from "../styles/main"
 
-const Signup = ({ navigation }: RootStackScreenProps<'Signup'>) => {
+const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Zula</Text>
-      <Text style={styles.subtitle}>The Reading Tribe</Text>
-      <Text style={styles.description}>Join Our Reading Tribe</Text>
-      <Text style={styles.label}>Name</Text>
-      <View style={styles.inputContainer}>
+    <View style={style.container}>
+      <Text style={[style.title, styles.title]}>Zula</Text>
+      <Text style={[style.subtitle, styles.subtitle]}>The Reading Tribe</Text>
+      <Text style={[style.description, styles.description]}>Join Our Reading Tribe</Text>
+      <Text style={style.inPutlabel}>Name</Text>
+      <View style={style.inputContainer}>
         <TextInput
           style={styles.inputs}
           placeholder="Name"
@@ -19,8 +20,8 @@ const Signup = ({ navigation }: RootStackScreenProps<'Signup'>) => {
         />
       </View>
 
-      <Text style={styles.label}>Email</Text>
-      <View style={styles.inputContainer}>
+      <Text style={style.inPutlabel}>Email</Text>
+      <View style={style.inputContainer}>
         <TextInput
           style={styles.inputs}
           placeholder="Email"
@@ -30,8 +31,8 @@ const Signup = ({ navigation }: RootStackScreenProps<'Signup'>) => {
         />
       </View>
 
-      <Text style={styles.label}>Password</Text>
-      <View style={styles.inputContainer}>
+      <Text style={style.inPutlabel}>Password</Text>
+      <View style={style.inputContainer}>
         <TextInput
           style={styles.inputs}
           placeholder="Password"
@@ -43,35 +44,24 @@ const Signup = ({ navigation }: RootStackScreenProps<'Signup'>) => {
 
       <View style={styles.buttonContainer} >
         <TouchableOpacity
-          style={[styles.button, styles.loginButton]}
-          onPress={() => navigation.navigate('Login')}
+          style={style.button}
+          onPress={() => navigation.navigate("Login")}
         >
           <Text>Back to login</Text>
         </TouchableOpacity>
-
-        <TouchableHighlight
-          style={[styles.button, styles.signupButton]}
-          onPress={() => navigation.navigate('Home')}
-        >
+        <TouchableOpacity
+          style={[style.button, styles.signupButton]}
+          onPress={() => navigation.navigate("Dashboard")}>
           <Text style={styles.loginText}>Done</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </View>
   );
 }
 export default Signup;
 
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 10,
-  },
   title: {
-    fontSize: 36,
-    fontWeight: 'bold',
     marginTop: 40
   },
   subtitle: {
@@ -80,56 +70,31 @@ const styles = StyleSheet.create({
     lineHeight: 30
   },
   description: {
-    color: '#ffffff',
-    fontSize: 55,
     marginBottom: 30,
-    lineHeight: 69,
-    fontWeight: 'bold',
   },
-  label:{
-    textAlign: 'left',
-    justifyContent: 'flex-start',
-    color: 'white', 
-    marginBottom: 5, 
-    alignSelf: 'flex-start',
-    fontSize: 15, 
-  },
-  inputContainer: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 5,
-    borderBottomWidth: 1,
-    marginBottom: 30,
-    flexDirection: 'row',
-    alignItems: 'center'
+  label: {
+    textAlign: "left",
+    justifyContent: "flex-start",
+    color: "white",
+    marginBottom: 5,
+    alignSelf: "flex-start",
+    fontSize: 15,
   },
   inputs: {
     height: 60,
     flex: 1
   },
   buttonContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginBottom: 20,
-  },
-  button: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 56,
-    margin: 4,
-    padding: 20,
-    borderRadius: 100,
-    borderWidth: 1,
-    borderColor: '#A0DAB3',
-    alignSelf: 'center'
-  },
-  loginButton: {
   },
   signupButton: {
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    backgroundColor: '#A0DAB3'
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#A0DAB3"
   },
   loginText: {
-    color: 'black'
+    color: "#00263A",
   }
 });
