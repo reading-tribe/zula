@@ -33,6 +33,10 @@ type funcRegisterEvent struct {
 	Email string `json:"email"`
 }
 
+func main() {
+
+}
+
 func Handler(ctx *nuclio.Context, event nuclio.Event) (interface{}, error) {
 	logger := nucliox.LoggerFromContext(ctx)
 	fnCtx, cancel := context.WithCancel(context.Background())
