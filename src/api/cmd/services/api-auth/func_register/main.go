@@ -42,7 +42,7 @@ func Handler(ctx *nuclio.Context, event nuclio.Event) (interface{}, error) {
 
 	logger.Debug("Parsing event")
 	var evt funcRegisterEvent
-	parsingErr := json.Unmarshal(event.GetBody(), evt)
+	parsingErr := json.Unmarshal(event.GetBody(), &evt)
 	if parsingErr != nil {
 		return nil, parsingErr
 	}
