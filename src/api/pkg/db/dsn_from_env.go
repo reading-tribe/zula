@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/reading-tribe/zula/pkg/env"
-	"github.com/reading-tribe/zula/pkg/models"
+	"github.com/reading-tribe/zula/src/api/pkg/env"
+	"github.com/reading-tribe/zula/src/api/pkg/models"
 )
 
 func DSNFromEnv() (models.DSN, error) {

@@ -3,7 +3,7 @@ package db
 import (
 	"context"
 
-	"github.com/reading-tribe/zula/pkg/models"
+	"github.com/reading-tribe/zula/src/api/pkg/models"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )

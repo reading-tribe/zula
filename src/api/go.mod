@@ -1,4 +1,4 @@
-module github.com/reading-tribe/zula
+module github.com/reading-tribe/zula/src/api
 
 go 1.17
 
@@ -21,7 +21,7 @@ require (
 	github.com/VerbalExpressions/GoVerbalExpressions v0.0.0-20200410162751-4d76a1099a6e
 	github.com/andybalholm/brotli v1.0.2 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
-	github.com/nuclio/logger v0.0.1 // indirect
+	github.com/nuclio/logger v0.0.1
 	github.com/segmentio/ksuid v1.0.4
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.31.0 // indirect

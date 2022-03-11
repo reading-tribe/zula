@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"github.com/reading-tribe/zula/pkg/db"
-	"github.com/reading-tribe/zula/pkg/models"
+	"github.com/reading-tribe/zula/src/api/pkg/db"
+	"github.com/reading-tribe/zula/src/api/pkg/models"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 

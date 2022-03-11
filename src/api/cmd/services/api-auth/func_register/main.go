@@ -23,10 +23,10 @@ import (
 	"fmt"
 
 	"github.com/nuclio/nuclio-sdk-go"
-	"github.com/reading-tribe/zula/pkg/db"
-	"github.com/reading-tribe/zula/pkg/models"
-	"github.com/reading-tribe/zula/pkg/nucliox"
-	"github.com/reading-tribe/zula/pkg/repository"
+	"github.com/reading-tribe/zula/src/api/pkg/db"
+	"github.com/reading-tribe/zula/src/api/pkg/models"
+	"github.com/reading-tribe/zula/src/api/pkg/nucliox"
+	"github.com/reading-tribe/zula/src/api/pkg/repository"
 )
 
 type funcRegisterEvent struct {
