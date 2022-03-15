@@ -1,19 +1,21 @@
 import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
 import { Text, View } from "../components/Themed";
 import style from '../styles/main'
 
 const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
+  const { t } = useTranslation();
+
   return (
     <View style={style.container}>
-      <Text style={[style.title, styles.title]}>Zula</Text>
-      <Text style={[style.subtitle, styles.subtitle]}>The Reading Tribe</Text>
-      <Text style={style.description}>Welcome!</Text>
-      <Text style={[style.description, styles.subText]}>Its Good To See You.</Text>
+      <Text style={[style.title]}>Zula</Text>
+      <Text style={[style.subtitle]}>{t("subtitle")}</Text>
+      <Text style={[style.description, styles.description]}>{t("description")}</Text>
       <Text style={style.inPutlabel}>Name</Text>
       <View style={style.inputContainer}>
         <TextInput
-          style={styles.inputs}
+          style={style.input}
           placeholder="Name"
           keyboardType="default"
           underlineColorAndroid="transparent"
@@ -24,7 +26,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
       <Text style={style.inPutlabel}>Password</Text>
       <View style={[style.inputContainer, styles.passwordField]}>
         <TextInput
-          style={styles.inputs}
+          style={style.input}
           placeholder="Password"
           secureTextEntry={true}
           underlineColorAndroid="transparent"
@@ -43,7 +45,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
           style={[style.button, styles.loginButton]}
           onPress={() => navigation.navigate("Dashboard")}
         >
-          <Text style={styles.loginText}>Login</Text>
+          <Text>Login</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -52,13 +54,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
 export default Login;
 
 const styles = StyleSheet.create({
-  title: {
-    marginTop: 40
-  },
-  subtitle: {
-    marginBottom: 30,
-  },
-  subText: {
+  description:{
     marginBottom: 30,
   },
   passwordField: {
@@ -88,7 +84,4 @@ const styles = StyleSheet.create({
     backgroundColor: "#A0DAB3",
     marginTop: 20,
   },
-  loginText: {
-    color: "#00263A"
-  }
 });

@@ -1,31 +1,34 @@
 import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { useTranslation } from "react-i18next";
 import { Text, View } from "../components/Themed";
 import { RootStackScreenProps } from "../../types";
+import theme from "../constants/Colors";
 import style from "../styles/main"
 
 const Dashboard = ({ navigation }: RootStackScreenProps<"Dashboard">) => {
+  const { t } = useTranslation();
 
   return (
     <ScrollView>
       <View style={style.container}>
-        <Text style={[style.title, styles.title]}>Zula</Text>
-        <Text style={[style.subtitle, styles.subtitle]}>The Reading Tribe</Text>
-        <Text style={[style.description, styles.description]}>Welcome! Its Good To See You</Text>
+        <Text style={[style.title]}>Zula</Text>
+        <Text style={[style.subtitle]}>{t("subtitle")}</Text>
+        <Text style={[style.description, styles.description]}>{t("description")}</Text>
         <View style={styles.avatarContainer} >
           <TouchableOpacity style={styles.avatar} onPress={() => navigation.navigate("Profile")}> 
             <Text style={styles.name}>Njinga</Text>
             <Text style={styles.nickname}>Nickname</Text>
-            <Text style={styles.nickname}>Child 1</Text>
+            <Text style={styles.child}>Child 1</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.avatar} onPress={() => navigation.navigate("Profile")}>
             <Text style={styles.name}>Tarik</Text>
             <Text style={styles.nickname}>Nickname</Text>
-            <Text style={styles.nickname}>Child 2</Text>
+            <Text style={styles.child}>Child 2</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.avatar} onPress={() => navigation.navigate("Profile")}>
             <Text style={styles.name}>Ramona</Text>
             <Text style={styles.nickname}>Nickname</Text>
-            <Text style={styles.nickname}>Child 3</Text>
+            <Text style={styles.child}>Child 3</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -35,14 +38,8 @@ const Dashboard = ({ navigation }: RootStackScreenProps<"Dashboard">) => {
 export default Dashboard;
 
 const styles = StyleSheet.create({
-  title: {
-    marginTop: 40
-  },
-  subtitle: {
-    marginBottom: 30,
-  },
   description: {
-    marginBottom: 50,
+    marginBottom: 40,
   },
   avatarContainer: {
     flexDirection: "column",
@@ -57,18 +54,20 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: theme.primary,
   },
   name: {
-    color: "#00263A",
     fontSize: 32,
     fontWeight: "bold",
     marginBottom: 100
   },
   nickname: {
-    color: "#99A8B0",
+    color: theme.white,
     fontSize: 24,
     marginBottom: 10,
-    opacity: 1
+  },
+  child: {
+    color: theme.white,
+    fontSize: 18,
   }
 });

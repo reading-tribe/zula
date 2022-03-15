@@ -1,18 +1,21 @@
 import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
 import { Text, View } from "../components/Themed";
 import style from "../styles/main"
 
 const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
+  const { t } = useTranslation()
+
   return (
     <View style={style.container}>
       <Text style={[style.title, styles.title]}>Zula</Text>
-      <Text style={[style.subtitle, styles.subtitle]}>The Reading Tribe</Text>
-      <Text style={[style.description, styles.description]}>Join Our Reading Tribe</Text>
+      <Text style={[style.subtitle, styles.subtitle]}>{t("subtitle")}</Text>
+      <Text style={[style.description, styles.description]}>{t("description")}</Text>
       <Text style={style.inPutlabel}>Name</Text>
       <View style={style.inputContainer}>
         <TextInput
-          style={styles.inputs}
+          style={style.input}
           placeholder="Name"
           keyboardType="default"
           underlineColorAndroid="transparent"
@@ -23,7 +26,7 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
       <Text style={style.inPutlabel}>Email</Text>
       <View style={style.inputContainer}>
         <TextInput
-          style={styles.inputs}
+          style={style.input}
           placeholder="Email"
           keyboardType="email-address"
           underlineColorAndroid="transparent"
@@ -34,7 +37,7 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
       <Text style={style.inPutlabel}>Password</Text>
       <View style={style.inputContainer}>
         <TextInput
-          style={styles.inputs}
+          style={style.input}
           placeholder="Password"
           secureTextEntry={true}
           underlineColorAndroid="transparent"

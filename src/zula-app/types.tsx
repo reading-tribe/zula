@@ -1,4 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { NavigatorScreenParams } from '@react-navigation/native';
 
 declare global {
   namespace ReactNavigation {
@@ -7,7 +8,7 @@ declare global {
 }
 
 export type RootStackParamList = {
-  Root: undefined;
+  Root: NavigatorScreenParams<HomeStackParamList> | undefined;
   NotFound: undefined;
   Home: undefined;
   Login: undefined;

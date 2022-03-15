@@ -11,14 +11,16 @@ export default StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: "bold",
+    marginTop: 10
   },
   subtitle: {
     fontSize: 24,
-    lineHeight: 30
+    lineHeight: 30,
+    marginBottom: 30,
   },
   description: {
-    color: theme.white,
-    fontSize: 55,
+    color: theme.secondary,
+    fontSize: 50,
     lineHeight: 65,
     fontWeight: "bold",
   },
@@ -34,10 +36,7 @@ export default StyleSheet.create({
     alignSelf: "center",
   },
   inputContainer: {
-    backgroundColor: theme.white,
-    borderRadius: 5,
-    borderBottomWidth: 1,
-    marginBottom: 30,
+    marginBottom: 20,
     flexDirection: "row",
     alignItems: "center",
     width: "100%",
@@ -45,9 +44,22 @@ export default StyleSheet.create({
   inPutlabel:{
     textAlign: "left",
     justifyContent: "flex-start",
-    color: theme.white, 
+    color: theme.secondary, 
     marginBottom: 5, 
     alignSelf: "flex-start",
     fontSize: 15, 
+  },
+  input: {
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderRadius: 5,
+    borderColor: theme.gray,
+    backgroundColor: theme.white,
+    height: 60,
+    paddingLeft: 15,
+    paddingRight: 15,
+    flex: 1
   },
 });

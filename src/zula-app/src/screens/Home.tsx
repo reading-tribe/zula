@@ -1,29 +1,33 @@
+import React, {useState} from 'react';
 import { StyleSheet, TouchableHighlight } from "react-native";
+import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
 import { Text, View } from "../components/Themed";
 import theme from "../constants/Colors";
 import style from "../styles/main"
 
 const Home = ({ navigation }: RootStackScreenProps<"Home">) => {
+  const { t } = useTranslation();
+
   return (
     <View style={style.container}>
-      <Text style={[style.title, styles.title]}>Zula</Text>
+      <Text style={[style.title]}>Zula</Text>
       <Text
-        style={[style.subtitle, styles.subtitle]}
-      >The Reading Tribe</Text>
-      <Text style={[style.description, styles.description]}>Welcome! Its Good To See You</Text>
+        style={[style.subtitle]}
+      >{t("subtitle")}</Text>
+      <Text style={[style.description, styles.description]}>{t("description")}</Text>
       <View style={styles.buttonContainer} >
         <TouchableHighlight
           style={[style.button, styles.loginButton]}
           onPress={() => navigation.navigate("Login")}
         >
-          <Text style={styles.loginText}>Login</Text>
+          <Text>Login</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={[style.button, styles.signupButton]}
           onPress={() => navigation.navigate("Signup")}
         >
-          <Text>Create New Account</Text>
+          <Text style={styles.signupText}>Create New Account</Text>
         </TouchableHighlight>
       </View>
     </View>
@@ -48,13 +52,14 @@ const styles = StyleSheet.create({
   },
   signupButton: {
     width: 200,
+    backgroundColor: theme.secondary,
   },
   loginButton: {
     width: 200,
     backgroundColor: theme.primary,
     marginBottom: 10,
   },
-  loginText: {
-    color: theme.secondary
+  signupText: {
+    color: theme.primary,
   },
 });
