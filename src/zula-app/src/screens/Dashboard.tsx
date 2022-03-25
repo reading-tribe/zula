@@ -1,9 +1,9 @@
 import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
-import { Text, View } from "../components/Themed";
+import { Text, View } from "../components/styles/Themed";
 import { RootStackScreenProps } from "../../types";
 import theme from "../constants/Colors";
-import style from "../styles/main"
+import style from "../components/styles/main"
 
 const Dashboard = ({ navigation }: RootStackScreenProps<"Dashboard">) => {
   const { t } = useTranslation();
@@ -14,8 +14,11 @@ const Dashboard = ({ navigation }: RootStackScreenProps<"Dashboard">) => {
         <Text style={[style.title]}>Zula</Text>
         <Text style={[style.subtitle]}>{t("subtitle")}</Text>
         <Text style={[style.description, styles.description]}>{t("description")}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Books")}>
+          <Text style={[styles.nickname, { color: "red" }]}>BOOKS</Text>
+        </TouchableOpacity>
         <View style={styles.avatarContainer} >
-          <TouchableOpacity style={styles.avatar} onPress={() => navigation.navigate("Profile")}> 
+          <TouchableOpacity style={styles.avatar} onPress={() => navigation.navigate("Profile")}>
             <Text style={styles.name}>Njinga</Text>
             <Text style={styles.nickname}>Nickname</Text>
             <Text style={styles.child}>Child 1</Text>

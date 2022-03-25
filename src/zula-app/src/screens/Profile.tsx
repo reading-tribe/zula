@@ -1,8 +1,8 @@
 import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
-import { Text, View } from "../components/Themed";
+import { Text, View } from "../components/styles/Themed";
 import { RootStackScreenProps } from "../../types";
-import style from '../styles/main'
+import style from "../components/styles/main"
 
 const Profile = ({ navigation }: RootStackScreenProps<"Profile">) => {
   const { t } = useTranslation();
@@ -10,7 +10,7 @@ const Profile = ({ navigation }: RootStackScreenProps<"Profile">) => {
   return (
     <ScrollView>
       <View style={style.container}>
-        <Text style={[style.title]}>Zula</Text>
+        <Text style={[style.title, styles.title]}>Zula</Text>
         <Text style={[style.subtitle]}>{t("subtitle")}</Text>
         <TouchableOpacity
           style={style.button}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export * from \"./types\";\nimport { ViewPager } from \"./ViewPager\";\nexport default ViewPager;","map":{"version":3,"sources":["index.tsx"],"names":[],"mappings":"AAAA;AACA,SAAA,SAAA;AACA,eAAA,SAAA","sourcesContent":["export * from './types';\nimport { ViewPager } from './ViewPager';\nexport default ViewPager;\n"]},"metadata":{},"sourceType":"module"}

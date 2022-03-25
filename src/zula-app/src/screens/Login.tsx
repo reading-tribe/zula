@@ -1,8 +1,8 @@
 import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View } from "../components/Themed";
-import style from '../styles/main'
+import { Text, View } from "../components/styles/Themed";
+import style from "../components/styles/main"
 
 const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
   const { t } = useTranslation();
@@ -11,7 +11,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
     <View style={style.container}>
       <Text style={[style.title]}>Zula</Text>
       <Text style={[style.subtitle]}>{t("subtitle")}</Text>
-      <Text style={[style.description, styles.description]}>{t("description")}</Text>
+      <Text style={[style.description]}>{t("description")}</Text>
       <Text style={style.inPutlabel}>Name</Text>
       <View style={style.inputContainer}>
         <TextInput
@@ -35,7 +35,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
       </View>
 
       <View style={styles.buttonContainer} >
-      <TouchableOpacity
+        <TouchableOpacity
           style={styles.resetPassword}
           onPress={() => navigation.navigate("Signup")}
         >
@@ -54,9 +54,6 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
 export default Login;
 
 const styles = StyleSheet.create({
-  description:{
-    marginBottom: 30,
-  },
   passwordField: {
     marginBottom: 20,
   },

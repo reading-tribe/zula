@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import theme from '../constants/Colors';
+import theme from '../../constants/Colors';
 
 export default StyleSheet.create({
   container: {
@@ -16,13 +16,14 @@ export default StyleSheet.create({
   subtitle: {
     fontSize: 24,
     lineHeight: 30,
-    marginBottom: 30,
+    marginBottom: 20,
   },
   description: {
     color: theme.secondary,
     fontSize: 50,
     lineHeight: 65,
     fontWeight: "bold",
+    marginBottom: 30,
   },
   button: {
     justifyContent: "center",

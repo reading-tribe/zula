@@ -1,13 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from "react";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { StyleSheet, TouchableHighlight } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View } from "../components/Themed";
+import { Text, View } from "../components/styles/Themed";
 import theme from "../constants/Colors";
-import style from "../styles/main"
+import style from "../components/styles/main"
+import { getUser, UserState, getUserAction } from "../redux/reducers/users"
 
 const Home = ({ navigation }: RootStackScreenProps<"Home">) => {
+  const dispatch = useDispatch()
   const { t } = useTranslation();
+
+  useEffect(() => {
+    dispatch(getUser())
+  }, [dispatch])
 
   return (
     <View style={style.container}>
@@ -33,7 +40,16 @@ const Home = ({ navigation }: RootStackScreenProps<"Home">) => {
     </View>
   );
 }
-export default Home;
+export default connect(
+  state => ({
+    user: state
+  }),
+  {
+    getUser,
+    getUserAction
+  }
+)(Home);
+
 
 const styles = StyleSheet.create({
   title: {

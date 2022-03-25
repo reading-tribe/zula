@@ -7,7 +7,7 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
-      Home: '/',
+      Root: '/',
       Login: 'login',
       Signup: 'signup',
       Profile: 'profile',

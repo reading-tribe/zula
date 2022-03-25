@@ -1,17 +1,17 @@
 import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View } from "../components/Themed";
-import style from "../styles/main"
+import { Text, View } from "../components/styles/Themed";
+import style from "../components/styles/main"
 
 const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
   const { t } = useTranslation()
 
   return (
     <View style={style.container}>
-      <Text style={[style.title, styles.title]}>Zula</Text>
-      <Text style={[style.subtitle, styles.subtitle]}>{t("subtitle")}</Text>
-      <Text style={[style.description, styles.description]}>{t("description")}</Text>
+      <Text style={[style.title]}>Zula</Text>
+      <Text style={[style.subtitle]}>{t("subtitle")}</Text>
+      <Text style={[style.description]}>{t("description")}</Text>
       <Text style={style.inPutlabel}>Name</Text>
       <View style={style.inputContainer}>
         <TextInput
@@ -64,17 +64,6 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
 export default Signup;
 
 const styles = StyleSheet.create({
-  title: {
-    marginTop: 40
-  },
-  subtitle: {
-    fontSize: 24,
-    marginBottom: 30,
-    lineHeight: 30
-  },
-  description: {
-    marginBottom: 30,
-  },
   label: {
     textAlign: "left",
     justifyContent: "flex-start",
