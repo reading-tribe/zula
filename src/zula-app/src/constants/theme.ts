@@ -9,6 +9,7 @@ export default {
       card: "rgb(255, 255, 255)",
       notification: "rgb(255, 59, 48)"
     },
+    light: true,
     dark: false
   },
   dark: {
@@ -21,6 +22,10 @@ export default {
       card: "rgb(255, 255, 255)",
       notification: "rgb(255, 59, 48)",
     },
-    dark: true
+    dark: true,
+    light: false
   },
 };
+export const buttonColor = {
+
+}

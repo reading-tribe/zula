@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { StyleSheet, TouchableHighlight } from "react-native";
+import { StyleSheet } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View } from "../components/styles/Themed";
+import { Text, View , TouchableHighlight} from "../components/Elements";
 import theme from "../constants/Colors";
 import style from "../components/styles/main"
 import { getUser, UserState, getUserAction } from "../redux/reducers/users"
 
 const Home = ({ navigation }: RootStackScreenProps<"Home">) => {
   const dispatch = useDispatch()
+  const user = useSelector(state => state);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -25,14 +26,15 @@ const Home = ({ navigation }: RootStackScreenProps<"Home">) => {
       <Text style={[style.description, styles.description]}>{t("description")}</Text>
       <View style={styles.buttonContainer} >
         <TouchableHighlight
-          style={[style.button, styles.loginButton]}
+          style={[style.button, {backgroundColor: theme.primary}]}
           onPress={() => navigation.navigate("Login")}
         >
           <Text>Login</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          style={[style.button, styles.signupButton]}
+          style={[style.button]}
           onPress={() => navigation.navigate("Signup")}
+          themeColor = {`${theme.secondary}`}
         >
           <Text style={styles.signupText}>Create New Account</Text>
         </TouchableHighlight>
@@ -65,15 +67,6 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     marginBottom: 20,
-  },
-  signupButton: {
-    width: 200,
-    backgroundColor: theme.secondary,
-  },
-  loginButton: {
-    width: 200,
-    backgroundColor: theme.primary,
-    marginBottom: 10,
   },
   signupText: {
     color: theme.primary,

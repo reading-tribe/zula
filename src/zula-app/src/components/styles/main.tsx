@@ -28,8 +28,10 @@ export default StyleSheet.create({
   button: {
     justifyContent: "center",
     alignItems: "center",
+    width: 200,
     height: 56,
     margin: 4,
+    marginBottom: 10,
     padding: 20,
     borderRadius: 100,
     borderWidth: 1,
@@ -63,4 +65,14 @@ export default StyleSheet.create({
     paddingRight: 15,
     flex: 1
   },
+  avatar: {
+    width: 300,
+    height: 300,
+    marginBottom: 30,
+    borderRadius: 150,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: theme.primary,
+  }
 });

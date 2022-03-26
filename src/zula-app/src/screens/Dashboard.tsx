@@ -1,6 +1,7 @@
+import React, { useState } from 'react';
 import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
-import { Text, View } from "../components/styles/Themed";
+import { Text, View } from "../components/Elements";
 import { RootStackScreenProps } from "../../types";
 import theme from "../constants/Colors";
 import style from "../components/styles/main"
@@ -18,17 +19,17 @@ const Dashboard = ({ navigation }: RootStackScreenProps<"Dashboard">) => {
           <Text style={[styles.nickname, { color: "red" }]}>BOOKS</Text>
         </TouchableOpacity>
         <View style={styles.avatarContainer} >
-          <TouchableOpacity style={styles.avatar} onPress={() => navigation.navigate("Profile")}>
+          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Profile")}>
             <Text style={styles.name}>Njinga</Text>
             <Text style={styles.nickname}>Nickname</Text>
             <Text style={styles.child}>Child 1</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.avatar} onPress={() => navigation.navigate("Profile")}>
+          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Profile")}>
             <Text style={styles.name}>Tarik</Text>
             <Text style={styles.nickname}>Nickname</Text>
             <Text style={styles.child}>Child 2</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.avatar} onPress={() => navigation.navigate("Profile")}>
+          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Profile")}>
             <Text style={styles.name}>Ramona</Text>
             <Text style={styles.nickname}>Nickname</Text>
             <Text style={styles.child}>Child 3</Text>
@@ -48,16 +49,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     marginBottom: 30,
-  },
-  avatar: {
-    width: 300,
-    height: 300,
-    marginBottom: 30,
-    borderRadius: 150,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: theme.primary,
   },
   name: {
     fontSize: 32,

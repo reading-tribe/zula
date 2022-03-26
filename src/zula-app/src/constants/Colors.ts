@@ -1,12 +1,4 @@
 export default {
-  light: {
-    text: "#00263A",
-    background: "#F7F7F7"
-  },
-  dark: {
-    text: "#00263A",
-    background: "#F7F7F7",
-  },
   primary: "#A0DAB3",
   secondary: "#00263A",
   danger: "#FF7676",

@@ -33,7 +33,7 @@ const {
 export const getUser = () => async (dispatch: Dispatch) => {
   const response = await fetch("https://randomuser.me/api/");
   const data = await response.json();
-  console.log("response", data.results[0]);
+ /*  console.log("response", data.results[0]); */
 
   const user = data.results[0];
 

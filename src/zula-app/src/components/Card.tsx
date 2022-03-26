@@ -6,7 +6,7 @@ import {
   Animated,
 } from 'react-native';
 
-import { Text, View } from "./styles/Themed";
+import { Text, View } from "./Elements";
 import theme from '../constants/Colors';
 
 const Card = () => {

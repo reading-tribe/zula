@@ -1,7 +1,9 @@
-import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import React, { useState } from 'react';
+import { StyleSheet, TextInput } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View } from "../components/styles/Themed";
+import { Text, View, TouchableHighlight } from "../components/Elements";
+import theme from "../constants/Colors";
 import style from "../components/styles/main"
 
 const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
@@ -46,17 +48,18 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
       </View>
 
       <View style={styles.buttonContainer} >
-        <TouchableOpacity
+        <TouchableHighlight
           style={style.button}
           onPress={() => navigation.navigate("Login")}
+          themeColor = {`${theme.white}`}
         >
           <Text>Back to login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
+        </TouchableHighlight>
+        <TouchableHighlight
           style={[style.button, styles.signupButton]}
           onPress={() => navigation.navigate("Dashboard")}>
           <Text style={styles.loginText}>Done</Text>
-        </TouchableOpacity>
+        </TouchableHighlight>
       </View>
     </View>
   );
@@ -72,19 +75,13 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     fontSize: 15,
   },
-  inputs: {
-    height: 60,
-    flex: 1
-  },
   buttonContainer: {
     flexDirection: "row",
+    justifyContent: "space-around",
     marginBottom: 20,
   },
   signupButton: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#A0DAB3"
   },
   loginText: {
     color: "#00263A",

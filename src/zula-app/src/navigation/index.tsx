@@ -79,7 +79,11 @@ function RootStackNavigator() {
   const handleChangeLanguage = () => {
     if (language == "de") {
       setLanguage("en")
-    } else {
+    } 
+    if (language == "en") {
+      setLanguage("fr")
+    }
+    if (language == "fr") {
       setLanguage("de")
     }
     i18n.changeLanguage(language)

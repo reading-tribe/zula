@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
 import { Text, View, TouchableHighlight } from "../components/Elements";
 import { RootStackScreenProps } from "../../types";
 import style from "../components/styles/main"
 
-const Profile = ({ navigation }: RootStackScreenProps<"Profile">) => {
-  const { t } = useTranslation();
+const Language = ({ navigation }: RootStackScreenProps<"Language">) => {
+  const [language, setLanguage] = useState("de");
+  const { t, i18n } = useTranslation();
+
+
+  const handleChangeLanguage = () => {
+    if (language == "de") {
+      setLanguage("en")
+    } 
+    if (language == "en") {
+      setLanguage("fr")
+    }
+    if (language == "fr") {
+      setLanguage("de")
+    }
+    i18n.changeLanguage(language)
+  };
 
   return (
     <ScrollView>
@@ -23,7 +38,9 @@ const Profile = ({ navigation }: RootStackScreenProps<"Profile">) => {
   );
 }
 
-export default Profile;
+export default Language;
+
+
 
 const styles = StyleSheet.create({
   title: {

@@ -1,7 +1,8 @@
+import React, { useState } from 'react';
 import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View } from "../components/styles/Themed";
+import { Text, View, TouchableHighlight } from "../components/Elements";
 import style from "../components/styles/main"
 
 const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
@@ -41,12 +42,12 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
         >
           <Text>Did you forget your Password?</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={[style.button, styles.loginButton]}
+        <TouchableHighlight
+          style={[style.button]}
           onPress={() => navigation.navigate("Dashboard")}
         >
           <Text>Login</Text>
-        </TouchableOpacity>
+        </TouchableHighlight>
       </View>
     </View>
   );
@@ -56,10 +57,6 @@ export default Login;
 const styles = StyleSheet.create({
   passwordField: {
     marginBottom: 20,
-  },
-  inputs: {
-    height: 60,
-    flex: 1,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -74,11 +71,5 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "flex-start",
     marginTop: 5,
-  },
-  loginButton: {
-    flex: 1,
-    width: 100,
-    backgroundColor: "#A0DAB3",
-    marginTop: 20,
   },
 });

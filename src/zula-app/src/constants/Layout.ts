@@ -1,7 +1,6 @@
-import { Platform, Dimensions, PixelRatio } from 'react-native';
+import { Platform, Dimensions } from 'react-native';
 
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
+const { height, width } = Dimensions.get('window');
 const platform = Platform.OS;
 
 const isIphoneX =
@@ -14,4 +13,9 @@ export default {
   },
   isSmallDevice: width < 375,
   isIphoneX
+};
+
+export const actualDimensions = {
+  height: (height < width) ? width : height,
+  width: (width > height) ? height : width
 };

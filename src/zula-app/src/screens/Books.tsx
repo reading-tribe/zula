@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, TouchableHighlight } from "react-native";
+import { StyleSheet } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View } from "../components/styles/Themed";
+import { Text, View, TouchableHighlight } from "../components/Elements";
 import theme from "../constants/Colors";
 import Card from "../components/Card"
 import style from "../components/styles/main"
@@ -18,7 +18,7 @@ const Books = ({ navigation }: RootStackScreenProps<"Books">) => {
       >{t("subtitle")}</Text>
         <Card />
       <TouchableHighlight
-        style={[style.button, styles.loginButton]}
+        style={[style.button]}
         onPress={() => navigation.navigate("Home")}
       >
         <Text>Back</Text>
@@ -29,34 +29,5 @@ const Books = ({ navigation }: RootStackScreenProps<"Books">) => {
 export default Books;
 
 const styles = StyleSheet.create({
-  container:{
-    backgroundColor: "pink",
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    display: "flex",
-    flexDirection: "column",
-    marginBottom: 20,
-  },
-  title: {
-    marginTop: 30
-  },
-  subtitle: {
-    marginBottom: 30,
-  },
-  cardContainer: {
-    marginBottom: 20,
-  },
-  signupButton: {
-    width: 200,
-    backgroundColor: theme.secondary,
-  },
-  loginButton: {
-    width: 200,
-    backgroundColor: theme.primary,
-    marginBottom: 10,
-  },
-  signupText: {
-    color: theme.primary,
-  },
+  
 });

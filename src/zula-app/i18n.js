@@ -2,19 +2,21 @@ import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 import de from "./src/locales/de.json";
 import en from "./src/locales/en.json";
+import fr from "./src/locales/fr.json";
 
 const namespace = "zula-app";
 
 const loadLocales = (i18next) => {
   i18next.addResourceBundle('en', namespace, en);
   i18next.addResourceBundle('de', namespace, de);
+  i18next.addResourceBundle('fr', namespace, fr);
 };
 
 const options = {
   lng: "de",
   ns: namespace,
   defaultNS: namespace,
-  lngs: ["de", "en"],
+  lngs: ["de", "en", "fr"],
   fallbackLng: "en",
   interpolation: {
     escapeValue: false
