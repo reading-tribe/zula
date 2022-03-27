@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import theme from '../../constants/Colors';
+import theme from '../constants/Colors';
 
 export default StyleSheet.create({
   container: {
@@ -37,6 +37,9 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: theme.primary,
     alignSelf: "center",
+  },
+  primaryButton:{
+    backgroundColor: theme.primary,
   },
   inputContainer: {
     marginBottom: 20,

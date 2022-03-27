@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput } from "react-native";
+import { StyleSheet, TextInput, Text, View, TouchableHighlight } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View, TouchableHighlight } from "../components/Elements";
 import theme from "../constants/Colors";
-import style from "../components/styles/main"
+import style from "../styles/main"
 
 const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
   const { t } = useTranslation()
@@ -51,7 +50,6 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
         <TouchableHighlight
           style={style.button}
           onPress={() => navigation.navigate("Login")}
-          themeColor = {`${theme.white}`}
         >
           <Text>Back to login</Text>
         </TouchableHighlight>
@@ -70,7 +68,7 @@ const styles = StyleSheet.create({
   label: {
     textAlign: "left",
     justifyContent: "flex-start",
-    color: "white",
+    color: theme.white,
     marginBottom: 5,
     alignSelf: "flex-start",
     fontSize: 15,
@@ -82,8 +80,9 @@ const styles = StyleSheet.create({
   },
   signupButton: {
     flex: 1,
+    backgroundColor: theme.primary
   },
   loginText: {
-    color: "#00263A",
+    color: theme.secondary,
   }
 });

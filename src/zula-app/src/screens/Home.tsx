@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text, View , TouchableHighlight } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View , TouchableHighlight} from "../components/Elements";
 import theme from "../constants/Colors";
-import style from "../components/styles/main"
+import style from "../styles/main"
 import { getUser, UserState, getUserAction } from "../redux/reducers/users"
 
 const Home = ({ navigation }: RootStackScreenProps<"Home">) => {
@@ -32,9 +31,8 @@ const Home = ({ navigation }: RootStackScreenProps<"Home">) => {
           <Text>Login</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          style={[style.button]}
+          style={[style.button, {backgroundColor: theme.secondary}]}
           onPress={() => navigation.navigate("Signup")}
-          themeColor = {`${theme.secondary}`}
         >
           <Text style={styles.signupText}>Create New Account</Text>
         </TouchableHighlight>

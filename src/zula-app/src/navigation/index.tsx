@@ -13,7 +13,7 @@ import NotFoundScreen from "../screens/NotFoundScreen";
 import ProfileScreen from "../screens/Profile";
 import SignupScreen from "../screens/Signup";
 
-import themes from "../constants/theme";
+import { theme, Colors } from "../constants";
 
 const Homestack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -79,7 +79,7 @@ function RootStackNavigator() {
   const handleChangeLanguage = () => {
     if (language == "de") {
       setLanguage("en")
-    } 
+    }
     if (language == "en") {
       setLanguage("fr")
     }
@@ -92,33 +92,22 @@ function RootStackNavigator() {
   return (
     <Stack.Navigator initialRouteName="Root">
       <Stack.Screen name="Root" component={HomestackNavigator} options={options.homeHeader} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ headerShown: false }}/>
+      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Dashboard" component={DashboardScreen} options={options.dashboard} />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
       </Stack.Group>
     </Stack.Navigator>
   );
 }
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
-  let theme;
-
-  const setTheme = () => {
-    theme = themes.light
-    if (colorScheme === "dark") {
-      theme = themes.dark
-    }
-    return theme
-  };
-
-  setTheme()
-
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={theme}>
-      <RootStackNavigator />
+      theme={colorScheme === 'dark' ? theme.dark : theme.light}
+    >
+        <RootStackNavigator />
     </NavigationContainer>
   );
 }

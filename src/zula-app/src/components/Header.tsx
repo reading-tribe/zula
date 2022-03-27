@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet } from 'react-native'
-import { Text, View } from "../components/Elements";
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { useTranslation } from "react-i18next";
 
 export interface HeaderProps {
   headerLeft?: JSX.Element;
@@ -9,6 +9,21 @@ export interface HeaderProps {
 }
 
 export const Header = (props: HeaderProps) => {
+  const [language, setLanguage] = useState("de");
+  const { i18n } = useTranslation();
+
+  const handleChangeLanguage = () => {
+    if (language == "de") {
+      setLanguage("en")
+    }
+    if (language == "en") {
+      setLanguage("fr")
+    }
+    if (language == "fr") {
+      setLanguage("de")
+    }
+    i18n.changeLanguage(language)
+  };
 
   return (
     <View style={{
@@ -18,11 +33,13 @@ export const Header = (props: HeaderProps) => {
         {props.headerLeft !== undefined && props.headerLeft}
       </View>
       <Text style={styles.title}>
-          {props.title}
-        </Text>
-      <View style={styles.headerRight}>
-        {props.headerRight !== undefined && props.headerRight}
-      </View>
+        {props.title}
+      </Text>
+      <TouchableOpacity
+        onPress={() => handleChangeLanguage()}
+      >
+        <Text style={styles.headerRight}>{language}</Text>
+      </TouchableOpacity>
     </View>
   )
 }

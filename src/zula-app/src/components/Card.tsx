@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-  Animated,
-} from 'react-native';
-
-import { Text, View } from "./Elements";
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native';
 import theme from '../constants/Colors';
+import style from "../styles/main"
 
 const Card = () => {
   let animatedValue = new Animated.Value(0);
@@ -16,6 +10,7 @@ const Card = () => {
   animatedValue.addListener(({ value }) => {
     currentValue = value;
   });
+  
   const flipAnimation = () => {
     if (currentValue >= 90) {
       Animated.spring(animatedValue, {
@@ -34,35 +29,65 @@ const Card = () => {
     }
   };
 
-  const setInterpolate = animatedValue.interpolate({
+  const frontInterpolate = animatedValue.interpolate({
     inputRange: [0, 180],
-    outputRange: ['180deg', '360deg'],
+    outputRange: ['0deg', '180deg'],
+  })
+
+  const backInterpolate = animatedValue.interpolate({
+    inputRange: [0, 180],
+    outputRange: ['180deg', '360deg']
+  })
+
+  const frontOpacity = animatedValue.interpolate({
+    inputRange: [89, 90],
+    outputRange: [1, 0]
   });
 
-  const rotateYAnimatedStyle = {
-    transform: [{ rotateY: setInterpolate }],
-  };
+  const backOpacity = animatedValue.interpolate({
+    inputRange: [89, 90],
+    outputRange: [0, 1]
+  });
+
+  const elevationFront = animatedValue.interpolate({
+    inputRange: [0, 25],
+    outputRange: [10, 0]
+  })
+
+  const elevationBack = animatedValue.interpolate({
+    inputRange: [155, 180],
+    outputRange: [0, 10]
+  })
+
+  const frontAnimatedStyle = {
+    transform: [{ rotateY: frontInterpolate }]
+  }
+  const backAnimatedStyle = {
+    transform: [{ rotateY: backInterpolate }]
+  }
+
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.card}>
-        <Text style={styles.titleText}>
-          CARD
-        </Text>
-        <Animated.Image
-          source={{
-            uri:
-              'https://raw.githubusercontent.com/AboutReact/sampleresource/master/desktop-computer-screen-with-arrow-to-the-left-and-coin-stack.png',
-          }}
-          style={[rotateYAnimatedStyle, styles.imageStyle]}
-        />
-        <TouchableOpacity style={styles.buttonStyle} onPress={flipAnimation}>
-          <Text style={styles.buttonTextStyle}>
-            {' '}
-           Flip Card{' '}
+    <SafeAreaView style={style.container}>
+      <Animated.View style={[styles.card, { elevation: elevationFront }, { opacity: frontOpacity }]}>
+        <Text style={{ fontSize: 20, paddingTop: 8, paddingLeft: 8, color: 'black', lineHeight: 20 }}>
+          Front Page
           </Text>
+        <TouchableOpacity style={[style.button, {backgroundColor: theme.primary}]}  onPress={flipAnimation}>
+          <Text style={styles.buttonTextStyle}>
+            Flip to back
+            </Text>
         </TouchableOpacity>
-      </View>
+      </Animated.View>
+
+      <Animated.View style={[styles.card, backAnimatedStyle, styles.paperBack, { elevation: elevationBack }, { opacity: backOpacity }]}>
+        <Text>Back Page </Text>
+        <TouchableOpacity style={[style.button]} onPress={flipAnimation}>
+          <Text style={styles.buttonTextStyle}>
+            Flip to front
+            </Text>
+        </TouchableOpacity>
+      </Animated.View>
     </SafeAreaView>
   );
 };
@@ -70,20 +95,19 @@ const Card = () => {
 export default Card;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: theme.danger
+  paperBack: {
+    top: -215,
   },
   card: {
+    marginHorizontal: 15,
+    minHeight: 200,
+    borderRadius: 5,
+    width: 350,
+    marginBottom: 15,
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderLeftWidth: 1,
     borderRightWidth: 1,
-    backgroundColor: "pink",
-    width: 300,
-    height: 300,
     borderColor: theme.secondary
   },
   titleText: {
@@ -91,23 +115,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
-  buttonStyle: {
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-    fontSize: 16,
-    width: 200,
-    borderColor: theme.secondary,
-  },
   buttonTextStyle: {
-    padding: 5,
     color: theme.secondary,
     textAlign: 'center',
-  },
-  imageStyle: {
-    width: 300,
-    height: 300,
-    borderRadius: 6,
   },
 });

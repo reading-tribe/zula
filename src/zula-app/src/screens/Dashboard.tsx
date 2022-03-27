@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, Text, View  } from "react-native";
 import { useTranslation } from "react-i18next";
-import { Text, View } from "../components/Elements";
 import { RootStackScreenProps } from "../../types";
 import theme from "../constants/Colors";
-import style from "../components/styles/main"
+import style from "../styles/main"
 
 const Dashboard = ({ navigation }: RootStackScreenProps<"Dashboard">) => {
   const { t } = useTranslation();
@@ -15,21 +14,21 @@ const Dashboard = ({ navigation }: RootStackScreenProps<"Dashboard">) => {
         <Text style={[style.title]}>Zula</Text>
         <Text style={[style.subtitle]}>{t("subtitle")}</Text>
         <Text style={[style.description, styles.description]}>{t("description")}</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Books")}>
-          <Text style={[styles.nickname, { color: "red" }]}>BOOKS</Text>
+        <TouchableOpacity style={style.button} onPress={() => navigation.navigate("Profile")}>
+          <Text style={[ { color: theme.secondary }]}>Profile</Text>
         </TouchableOpacity>
         <View style={styles.avatarContainer} >
-          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Profile")}>
+          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
             <Text style={styles.name}>Njinga</Text>
             <Text style={styles.nickname}>Nickname</Text>
             <Text style={styles.child}>Child 1</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Profile")}>
+          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
             <Text style={styles.name}>Tarik</Text>
             <Text style={styles.nickname}>Nickname</Text>
             <Text style={styles.child}>Child 2</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Profile")}>
+          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
             <Text style={styles.name}>Ramona</Text>
             <Text style={styles.nickname}>Nickname</Text>
             <Text style={styles.child}>Child 3</Text>

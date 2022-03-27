@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { ScrollView, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
-import { Text, View, TouchableHighlight } from "../components/Elements";
 import { RootStackScreenProps } from "../../types";
-import style from "../components/styles/main"
+import style from "../styles/main"
 
 const Profile = ({ navigation }: RootStackScreenProps<"Profile">) => {
   const { t } = useTranslation();

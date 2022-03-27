@@ -2,9 +2,9 @@
   "expoServerPort": 19000,
   "devToolsPort": 19002,
   "packagerPort": 19000,
-  "expoServerNgrokUrl": "https://nv-mid.ansud06.zula-app.exp.direct",
-  "packagerNgrokUrl": "https://nv-mid.ansud06.zula-app.exp.direct",
-  "ngrokPid": 76155,
-  "webpackServerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
+  "webpackServerPort": 19006,
   "packagerPid": null
 }

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View, TouchableHighlight } from "../components/Elements";
 import theme from "../constants/Colors";
 import Card from "../components/Card"
-import style from "../components/styles/main"
+import style from "../styles/main"
 
 const Books = ({ navigation }: RootStackScreenProps<"Books">) => {
   const { t } = useTranslation();

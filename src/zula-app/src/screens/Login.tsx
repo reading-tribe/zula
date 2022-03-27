@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, TextInput, Text, View, TouchableHighlight, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { Text, View, TouchableHighlight } from "../components/Elements";
-import style from "../components/styles/main"
+import style from "../styles/main"
 
 const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
   const { t } = useTranslation();
@@ -43,7 +42,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
           <Text>Did you forget your Password?</Text>
         </TouchableOpacity>
         <TouchableHighlight
-          style={[style.button]}
+          style={[style.button, style.primaryButton]}
           onPress={() => navigation.navigate("Dashboard")}
         >
           <Text>Login</Text>
