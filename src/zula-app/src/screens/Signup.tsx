@@ -1,35 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { StyleSheet, TextInput, Text, View, TouchableHighlight } from "react-native";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
+import { createUser, RegisterRequest, createUserAction } from "../redux/reducers/users"
 import theme from "../constants/Colors";
 import style from "../styles/main"
 
 const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
-  const { t } = useTranslation()
+  const users = useSelector(state => state);
+  const [user, setUsers] = useState({ emailAddress: "", password: "" });
+  const dispatch = useDispatch()
+  const { t } = useTranslation();
+  const inputRef = React.createRef<TextInput>();
 
+  const handleChange = (key: string, value: string) => {
+    setUsers((prev) => ({
+      ...prev,
+      [key]: value,
+    }))
+  };
+
+  const handleSubmit = (user: RegisterRequest) => {
+    dispatch(createUser({
+      emailAddress: user.emailAddress,
+      password: user.password
+    }))
+    if (user){
+      navigation.navigate("Dashboard")
+    }
+  };
+
+/*   useEffect(() => {
+    dispatch(createUser(user))
+  }, [dispatch]) */
+  
   return (
     <View style={style.container}>
       <Text style={[style.title]}>Zula</Text>
       <Text style={[style.subtitle]}>{t("subtitle")}</Text>
       <Text style={[style.description]}>{t("description")}</Text>
-      <Text style={style.inPutlabel}>Name</Text>
-      <View style={style.inputContainer}>
-        <TextInput
-          style={style.input}
-          placeholder="Name"
-          keyboardType="default"
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-      </View>
 
       <Text style={style.inPutlabel}>Email</Text>
       <View style={style.inputContainer}>
         <TextInput
+          ref={inputRef}
           style={style.input}
           placeholder="Email"
           keyboardType="email-address"
+          value={user.emailAddress}
+          onChangeText={(text: string) => handleChange("emailAddress", text)}
           underlineColorAndroid="transparent"
           autoCapitalize="none"
         />
@@ -38,9 +58,12 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
       <Text style={style.inPutlabel}>Password</Text>
       <View style={style.inputContainer}>
         <TextInput
+          ref={inputRef}
           style={style.input}
           placeholder="Password"
           secureTextEntry={true}
+          value={user.password}
+          onChangeText={(text: string) => handleChange("password", text)}
           underlineColorAndroid="transparent"
           autoCapitalize="none"
         />
@@ -55,14 +78,22 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
         </TouchableHighlight>
         <TouchableHighlight
           style={[style.button, styles.signupButton]}
-          onPress={() => navigation.navigate("Dashboard")}>
+          onPress={() => handleSubmit(user)}>
           <Text style={styles.loginText}>Done</Text>
         </TouchableHighlight>
       </View>
     </View>
   );
 }
-export default Signup;
+export default connect(
+  state => ({
+    user: state
+  }),
+  {
+    createUser,
+    createUserAction
+  }
+)(Signup);
 
 const styles = StyleSheet.create({
   label: {

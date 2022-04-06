@@ -14,9 +14,6 @@ const Dashboard = ({ navigation }: RootStackScreenProps<"Dashboard">) => {
         <Text style={[style.title]}>Zula</Text>
         <Text style={[style.subtitle]}>{t("subtitle")}</Text>
         <Text style={[style.description, styles.description]}>{t("description")}</Text>
-        <TouchableOpacity style={style.button} onPress={() => navigation.navigate("Profile")}>
-          <Text style={[ { color: theme.secondary }]}>Profile</Text>
-        </TouchableOpacity>
         <View style={styles.avatarContainer} >
           <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
             <Text style={styles.name}>Njinga</Text>

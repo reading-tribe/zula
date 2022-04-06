@@ -16,7 +16,7 @@ export type RootStackParamList = {
   Dashboard: undefined;
   Profile: undefined;
   Books: undefined;
-  Language: undefined
+  Header: undefined
 };
 
 export type HomeStackParamList = {

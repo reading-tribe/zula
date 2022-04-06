@@ -1,9 +1,13 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./reducers/users"
+import userReducer from "./reducers/users";
+import bookReducer from "./reducers/books";
+import translationReducer from "./reducers/translations"
 
 const rootReducer = combineReducers({
-  user: userReducer 
+  user: userReducer,
+  book: bookReducer,
+  translations: translationReducer
 })
 
 export const store = configureStore({

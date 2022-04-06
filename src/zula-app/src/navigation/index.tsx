@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { ColorSchemeName, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Platform, ColorSchemeName, Image, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { getHeaderTitle, getDefaultHeaderHeight } from '@react-navigation/elements';
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Appbar } from 'react-native-paper';
 import LinkingConfiguration from "./LinkingConfiguration";
 import { RootStackParamList, HomeStackParamList } from "../../types";
+import { actualDimensions, platform } from "../constants/Layout"
 import BookScreen from "../screens/Books";
 import DashboardScreen from "../screens/Dashboard"
 import HomeScreen from "../screens/Home";
@@ -12,6 +15,7 @@ import LoginScreen from "../screens/Login";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import ProfileScreen from "../screens/Profile";
 import SignupScreen from "../screens/Signup";
+import Header from "../components/Header"
 
 import { theme, Colors } from "../constants";
 
@@ -23,7 +27,6 @@ function HomestackNavigator() {
       <Homestack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
       <Homestack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
       <Homestack.Screen name="Signup" component={SignupScreen} options={{ headerShown: false }} />
-      <Homestack.Screen name="Books" component={BookScreen} options={{ headerShown: false }} />
     </Homestack.Navigator>
   )
 }
@@ -35,6 +38,27 @@ function RootStackNavigator() {
   const { i18n } = useTranslation();
 
   const options = {
+    customHeader: {
+      header: ({ navigation, route, options, back }) => {
+        const title = getHeaderTitle(options, route.name);
+       return (
+          <Header
+            title={title}
+
+            headerLeft = {
+              <Appbar.Action icon="set-split" size={40} color={Colors.secondary} onPress={() => handleChangeLanguage()}>
+              </Appbar.Action>
+            }
+
+            headerRight = {
+              <Appbar.Action icon="account-settings" size={30} color={Colors.secondary} onPress={() => navigation.navigate("Profile")}>
+              </Appbar.Action>
+            }
+          />
+        );
+      }
+    },
+
     homeHeader: {
       title: "",
       headerBackVisible: false,
@@ -59,7 +83,8 @@ function RootStackNavigator() {
         </TouchableOpacity>
       ),
       headerLeft: () => (
-        <TouchableOpacity >
+        <TouchableOpacity
+        >
           <Image
             style={styles.avatar}
             source={require("../assets/images/icon.png")}
@@ -93,7 +118,8 @@ function RootStackNavigator() {
     <Stack.Navigator initialRouteName="Root">
       <Stack.Screen name="Root" component={HomestackNavigator} options={options.homeHeader} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Dashboard" component={DashboardScreen} options={options.dashboard} />
+      <Stack.Screen name="Dashboard" component={DashboardScreen} options={options.customHeader} />
+      <Stack.Screen name="Books" component={BookScreen} options={options.customHeader} />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
       </Stack.Group>
@@ -107,7 +133,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
       linking={LinkingConfiguration}
       theme={colorScheme === 'dark' ? theme.dark : theme.light}
     >
-        <RootStackNavigator />
+      <RootStackNavigator />
     </NavigationContainer>
   );
 }
@@ -125,6 +151,9 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     fontSize: 20,
+    color: "#00263A"
+  },
+  headerLeft: {
     color: "#00263A"
   }
 })

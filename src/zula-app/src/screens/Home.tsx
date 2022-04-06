@@ -12,10 +12,6 @@ const Home = ({ navigation }: RootStackScreenProps<"Home">) => {
   const user = useSelector(state => state);
   const { t } = useTranslation();
 
-  useEffect(() => {
-    dispatch(getUser())
-  }, [dispatch])
-
   return (
     <View style={style.container}>
       <Text style={[style.title]}>Zula</Text>
