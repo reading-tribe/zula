@@ -9,7 +9,7 @@
       -ms-flex-align: center;
           align-items: center;
   height: 100vh;
-  background-color: #00263a;
+  background-color: #ffffff;
 }
 
 .login-container .container {
@@ -42,7 +42,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #00263a;
+  background-color: #ffffff;
   width: 100%;
 }
 
@@ -70,42 +70,43 @@
   height: 80%;
   padding: 1.8rem 2.5rem;
   width: 50%;
-  border: 1px solid #a0dab3;
+  border: 1px solid;
   border-radius: 6.25rem;
+  background-color: #00263a;
 }
 
 .login-container h1 {
   font-family: Futura;
   font-size: 4.37rem;
   line-height: 5rem;
-  color: white;
+  color: #00263a;
 }
 
 .login-container h3 {
   font-family: Futura;
   font-size: 4.37rem;
   line-height: 3rem;
-  color: #a0dab3;
+  color: #00263a;
 }
 
 .login-container p {
   font-family: Futura;
   font-size: 1.56rem;
   line-height: 2.18rem;
-  color: #a0dab3;
+  color: #00263a;
 }
 
 .login-container small {
   font-family: Futura;
   font-size: 1rem;
   line-height: 0.6rem;
-  color: white;
+  color: #00263a;
 }
 
 .login-container .small-dark {
   font-family: Futura;
   font-size: 1rem;
   line-height: 0.6rem;
-  color: #a0dab3;
+  color: #00263a;
 }
 /*# sourceMappingURL=Login.css.map */
