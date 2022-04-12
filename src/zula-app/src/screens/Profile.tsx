@@ -10,52 +10,54 @@ const Profile = ({ navigation }: RootStackScreenProps<"Profile">) => {
   const { t } = useTranslation();
 
   return (
-    <ScrollView>
-      <View style={style.container}>
-        <View style={styles.avatarContainer}>
+    <View>
+      <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+        <View style={style.container}>
+          <View style={styles.avatarContainer}>
+            <TouchableOpacity
+              style={styles.avatarImage}
+              onPress={() => navigation.navigate("Books")}>
+              <Text>Njinga</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.avatarImage}
+              onPress={() => navigation.navigate("Books")}>
+              <Text>Tarik</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.avatarImage}
+              onPress={() => navigation.navigate("Books")}>
+              <Text>Ramona</Text>
+            </TouchableOpacity>
+          </View>
           <TouchableOpacity
-            style={styles.avatarImage}
-            onPress={() => navigation.navigate("Books")}>
-            <Text>Njinga</Text>
+            style={styles.button}
+            onPress={() => navigation.navigate("Home")}>
+            <Text>Home</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.avatarImage}
-            onPress={() => navigation.navigate("Books")}>
-            <Text>Tarik</Text>
+            style={styles.button}
+            onPress={() => navigation.navigate("Dashboard")}>
+            <Text>Meet Zula</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.avatarImage}
+            style={styles.button}
             onPress={() => navigation.navigate("Books")}>
-            <Text>Ramona</Text>
+            <Text>Zula Books</Text>
           </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("Books")}>
+            <Text>My bookshelf</Text>
+          </TouchableOpacity>
+          <TouchableHighlight
+            style={[style.button, style.whiteButton]}
+            onPress={() => navigation.navigate("Login")}>
+            <Text>Sign Out</Text>
+          </TouchableHighlight>
         </View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Home")}>
-          <Text>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Dashboard")}>
-          <Text>Meet Zula</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Books")}>
-          <Text>Zula Books</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate("Books")}>
-          <Text>My bookshelf</Text>
-        </TouchableOpacity>
-        <TouchableHighlight
-          style={style.button}
-          onPress={() => navigation.navigate("Login")}>
-          <Text>Sign Out</Text>
-        </TouchableHighlight>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 

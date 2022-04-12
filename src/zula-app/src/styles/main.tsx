@@ -4,7 +4,6 @@ import { platform } from "../constants/Layout";
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     padding: 10,
@@ -26,12 +25,18 @@ export default StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 30,
   },
+  buttonContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "row",
+    marginBottom: 20,
+  },
   button: {
     justifyContent: "center",
     alignItems: "center",
-    width: 200,
+    width: "100%",
     height: 56,
-    margin: 4,
+    marginTop: 4,
     marginBottom: 10,
     padding: 20,
     borderRadius: 100,
@@ -40,7 +45,16 @@ export default StyleSheet.create({
     alignSelf: "center",
   },
   primaryButton: {
+    width: "45%",
     backgroundColor: theme.primary,
+  },
+  secondaryButton: {
+    width: "45%",
+    backgroundColor: theme.secondary,
+  },
+  whiteButton: {
+    width: "45%",
+    backgroundColor: theme.white,
   },
   inputContainer: {
     marginBottom: 20,

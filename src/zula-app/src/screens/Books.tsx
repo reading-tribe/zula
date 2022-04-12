@@ -25,27 +25,27 @@ const Books = ({ navigation }: RootStackScreenProps<"Books">) => {
   }, []);
 
   return (
-    <View style={style.container}>
-      <ScrollView>
-        <Text
-          style={[style.description]}
-        >{t("intro.description")}</Text>
-        <View style={[style.inputContainer]}>
-          <TextInput
-            style={style.input}
-            placeholder="Search"
-            secureTextEntry={true}
-            underlineColorAndroid="transparent"
-            autoCapitalize="none"
-          />
+    <View>
+      <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+        <View style={style.container}>
+          <Text style={[style.description]}>{t("intro.description")}</Text>
+          <View style={[style.inputContainer]}>
+            <TextInput
+              style={style.input}
+              placeholder="Search"
+              secureTextEntry={true}
+              underlineColorAndroid="transparent"
+              autoCapitalize="none"
+            />
+          </View>
+          <BookCard />
+          <TouchableHighlight
+            style={[style.button, style.whiteButton]}
+            onPress={() => navigation.navigate("Dashboard")}
+          >
+            <Text>Back</Text>
+          </TouchableHighlight>
         </View>
-        <BookCard />
-        <TouchableHighlight
-          style={[style.button]}
-          onPress={() => navigation.navigate("Dashboard")}
-        >
-          <Text>Back</Text>
-        </TouchableHighlight>
       </ScrollView>
     </View>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, TextInput, Text, View, TouchableHighlight } from "react-native";
+import { ScrollView, StyleSheet, TextInput, Text, View, TouchableHighlight } from "react-native";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
@@ -36,53 +36,55 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
     }, [dispatch]) */
 
   return (
-    <View style={style.container}>
-      <Text style={[style.title]}>Zula</Text>
-      <Text style={[style.subtitle]}>{t("intro.subtitle")}</Text>
-      <Text style={[style.description]}>{t("intro.description")}</Text>
+    <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+      <View style={style.container}>
+        <Text style={[style.title]}>Zula</Text>
+        <Text style={[style.subtitle]}>{t("intro.subtitle")}</Text>
+        <Text style={[style.description]}>{t("intro.description")}</Text>
 
-      <Text style={style.inPutlabel}>Email</Text>
-      <View style={style.inputContainer}>
-        <TextInput
-          ref={inputRef}
-          style={style.input}
-          placeholder="Email"
-          keyboardType="email-address"
-          value={user.emailAddress}
-          onChangeText={(text: string) => handleChange("emailAddress", text)}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-      </View>
+        <Text style={style.inPutlabel}>Email</Text>
+        <View style={style.inputContainer}>
+          <TextInput
+            ref={inputRef}
+            style={style.input}
+            placeholder="Email"
+            keyboardType="email-address"
+            value={user.emailAddress}
+            onChangeText={(text: string) => handleChange("emailAddress", text)}
+            underlineColorAndroid="transparent"
+            autoCapitalize="none"
+          />
+        </View>
 
-      <Text style={style.inPutlabel}>Password</Text>
-      <View style={style.inputContainer}>
-        <TextInput
-          ref={inputRef}
-          style={style.input}
-          placeholder="Password"
-          secureTextEntry={true}
-          value={user.password}
-          onChangeText={(text: string) => handleChange("password", text)}
-          underlineColorAndroid="transparent"
-          autoCapitalize="none"
-        />
-      </View>
+        <Text style={style.inPutlabel}>Password</Text>
+        <View style={style.inputContainer}>
+          <TextInput
+            ref={inputRef}
+            style={style.input}
+            placeholder="Password"
+            secureTextEntry={true}
+            value={user.password}
+            onChangeText={(text: string) => handleChange("password", text)}
+            underlineColorAndroid="transparent"
+            autoCapitalize="none"
+          />
+        </View>
 
-      <View style={styles.buttonContainer} >
-        <TouchableHighlight
-          style={style.button}
-          onPress={() => navigation.navigate("Login")}
-        >
-          <Text>Back to login</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={[style.button, styles.signupButton]}
-          onPress={() => handleSubmit(user)}>
-          <Text style={styles.loginText}>Done</Text>
-        </TouchableHighlight>
+        <View style={style.buttonContainer} >
+          <TouchableHighlight
+            style={[style.button, style.whiteButton]}
+            onPress={() => navigation.navigate("Login")}
+          >
+            <Text>Back to login</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={[style.button, style.primaryButton]}
+            onPress={() => handleSubmit(user)}>
+            <Text style={styles.loginText}>Done</Text>
+          </TouchableHighlight>
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 export default connect(
@@ -103,15 +105,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     alignSelf: "flex-start",
     fontSize: 15,
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginBottom: 20,
-  },
-  signupButton: {
-    flex: 1,
-    backgroundColor: theme.primary
   },
   loginText: {
     color: theme.secondary,

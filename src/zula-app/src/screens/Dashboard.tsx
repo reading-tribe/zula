@@ -9,30 +9,32 @@ const Dashboard = ({ navigation }: RootStackScreenProps<"Dashboard">) => {
   const { t } = useTranslation();
 
   return (
-    <ScrollView>
-      <View style={style.container}>
-        <Text style={[style.title]}>Zula</Text>
-        <Text style={[style.subtitle]}>{t("intro.subtitle")}</Text>
-        <Text style={[style.description, styles.description]}>{t("intro.description")}</Text>
-        <View style={style.avatarContainer} >
-          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
-            <Text style={styles.name}>Njinga</Text>
-            <Text style={styles.nickname}>Nickname</Text>
-            <Text style={styles.child}>Child 1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
-            <Text style={styles.name}>Tarik</Text>
-            <Text style={styles.nickname}>Nickname</Text>
-            <Text style={styles.child}>Child 2</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
-            <Text style={styles.name}>Ramona</Text>
-            <Text style={styles.nickname}>Nickname</Text>
-            <Text style={styles.child}>Child 3</Text>
-          </TouchableOpacity>
+    <View>
+      <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+        <View style={style.container}>
+          <Text style={[style.title]}>Zula</Text>
+          <Text style={[style.subtitle]}>{t("intro.subtitle")}</Text>
+          <Text style={[style.description, styles.description]}>{t("intro.description")}</Text>
+          <View style={style.avatarContainer} >
+            <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
+              <Text style={styles.name}>Njinga</Text>
+              <Text style={styles.nickname}>Nickname</Text>
+              <Text style={styles.child}>Child 1</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
+              <Text style={styles.name}>Tarik</Text>
+              <Text style={styles.nickname}>Nickname</Text>
+              <Text style={styles.child}>Child 2</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
+              <Text style={styles.name}>Ramona</Text>
+              <Text style={styles.nickname}>Nickname</Text>
+              <Text style={styles.child}>Child 3</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 }
 export default Dashboard;
