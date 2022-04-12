@@ -4,7 +4,7 @@ import { Platform, ColorSchemeName, Image, Text, TouchableOpacity, StyleSheet } 
 import { getHeaderTitle, getDefaultHeaderHeight } from '@react-navigation/elements';
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Appbar } from 'react-native-paper';
+import { Appbar, Button, Menu, Divider } from 'react-native-paper';
 import LinkingConfiguration from "./LinkingConfiguration";
 import { RootStackParamList, HomeStackParamList } from "../../types";
 import { actualDimensions, platform } from "../constants/Layout"
@@ -16,10 +16,37 @@ import NotFoundScreen from "../screens/NotFoundScreen";
 import ProfileScreen from "../screens/Profile";
 import SignupScreen from "../screens/Signup";
 import Header from "../components/Header"
-
 import { theme, Colors } from "../constants";
 
 const Homestack = createNativeStackNavigator<HomeStackParamList>();
+
+const LanguageSelect = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { i18n } = useTranslation();
+
+  const handleChangeLanguage = async (language) => {
+    console.log(language)
+    i18n.changeLanguage(language)
+    toggle()
+  };
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  }
+
+  return (
+    <Menu
+      visible={isOpen}
+      onDismiss={toggle}
+      anchor={<Appbar.Action icon="arrow-down-drop-circle-outline" size={30} color={Colors.secondary} onPress={toggle} />}>
+      <Menu.Item onPress={() => handleChangeLanguage("de")} title="Deutsch" />
+      <Divider />
+      <Menu.Item onPress={() => handleChangeLanguage("en")} title="English" />
+      <Divider />
+      <Menu.Item onPress={() => handleChangeLanguage("fr")} title="French" />
+    </Menu>
+  );
+};
 
 function HomestackNavigator() {
   return (
@@ -34,25 +61,34 @@ function HomestackNavigator() {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootStackNavigator() {
-  const [language, setLanguage] = useState("de");
-  const { i18n } = useTranslation();
-
   const options = {
     customHeader: {
       header: ({ navigation, route, options, back }) => {
-        const title = getHeaderTitle(options, route.name);
-       return (
+        return (
           <Header
-            title={title}
-
-            headerLeft = {
-              <Appbar.Action icon="set-split" size={40} color={Colors.secondary} onPress={() => handleChangeLanguage()}>
-              </Appbar.Action>
+            title=""
+            headerLeft={
+              <Text />
             }
+            headerRight={
+              <Appbar.Action icon="account-settings" size={30} color={Colors.secondary} onPress={() => navigation.navigate("Profile")} />
+            }
+          />
+        );
+      }
+    },
 
-            headerRight = {
-              <Appbar.Action icon="account-settings" size={30} color={Colors.secondary} onPress={() => navigation.navigate("Profile")}>
-              </Appbar.Action>
+    dashboardHeader: {
+      header: ({ navigation, route, options, back }) => {
+        const title = getHeaderTitle(options, route.name);
+        return (
+          <Header
+            title="Parent Dashboard"
+            headerLeft={
+              <LanguageSelect />
+            }
+            headerRight={
+              <Appbar.Action icon="account-settings" size={30} color={Colors.secondary} onPress={() => navigation.navigate("Profile")} />
             }
           />
         );
@@ -60,65 +96,28 @@ function RootStackNavigator() {
     },
 
     homeHeader: {
-      title: "",
-      headerBackVisible: false,
-      headerLeft: () => null,
-      headerRight: () => (
-        <TouchableOpacity
-          onPress={() => handleChangeLanguage()}
-        >
-          <Text style={styles.headerRight}>{language}</Text>
-        </TouchableOpacity>
-      ),
-    },
-
-    dashboard: {
-      title: "Parent Dashboard",
-      headerBackVisible: false,
-      headerRight: () => (
-        <TouchableOpacity
-          onPress={() => handleChangeLanguage()}
-        >
-          <Text style={styles.headerRight}>{language}</Text>
-        </TouchableOpacity>
-      ),
-      headerLeft: () => (
-        <TouchableOpacity
-        >
-          <Image
-            style={styles.avatar}
-            source={require("../assets/images/icon.png")}
+      header: ({ navigation, route, options, back }) => {
+        const title = getHeaderTitle(options, route.name);
+        return (
+          <Header
+            title=""
+            headerLeft={
+              <Text />
+            }
+            headerRight={
+              <LanguageSelect />
+            }
           />
-        </TouchableOpacity>
-      ),
-      headerTitleStyle: {
-        fontSize: 25,
-        color: "#00263A"
-      },
-      headerStyle: {
-        backgroundColor: "#F7F7F7",
+        );
       }
-    }
+    },
   }
-
-  const handleChangeLanguage = () => {
-    if (language == "de") {
-      setLanguage("en")
-    }
-    if (language == "en") {
-      setLanguage("fr")
-    }
-    if (language == "fr") {
-      setLanguage("de")
-    }
-    i18n.changeLanguage(language)
-  };
 
   return (
     <Stack.Navigator initialRouteName="Root">
       <Stack.Screen name="Root" component={HomestackNavigator} options={options.homeHeader} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Dashboard" component={DashboardScreen} options={options.customHeader} />
+      <Stack.Screen name="Dashboard" component={DashboardScreen} options={options.dashboardHeader} />
       <Stack.Screen name="Books" component={BookScreen} options={options.customHeader} />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
@@ -147,13 +146,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderLeftWidth: 1,
     borderRightWidth: 1,
-    borderColor: "#00263A"
+    borderColor: Colors.secondary
   },
   headerRight: {
     fontSize: 20,
-    color: "#00263A"
+    marginLeft: 10,
+    color: Colors.secondary
   },
   headerLeft: {
-    color: "#00263A"
+    color: Colors.secondary
   }
 })

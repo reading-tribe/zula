@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, TouchableOpacity, Text, View  } from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
 import theme from "../constants/Colors";
@@ -12,9 +12,9 @@ const Dashboard = ({ navigation }: RootStackScreenProps<"Dashboard">) => {
     <ScrollView>
       <View style={style.container}>
         <Text style={[style.title]}>Zula</Text>
-        <Text style={[style.subtitle]}>{t("subtitle")}</Text>
-        <Text style={[style.description, styles.description]}>{t("description")}</Text>
-        <View style={styles.avatarContainer} >
+        <Text style={[style.subtitle]}>{t("intro.subtitle")}</Text>
+        <Text style={[style.description, styles.description]}>{t("intro.description")}</Text>
+        <View style={style.avatarContainer} >
           <TouchableOpacity style={style.avatar} onPress={() => navigation.navigate("Books")}>
             <Text style={styles.name}>Njinga</Text>
             <Text style={styles.nickname}>Nickname</Text>
@@ -40,11 +40,6 @@ export default Dashboard;
 const styles = StyleSheet.create({
   description: {
     marginBottom: 40,
-  },
-  avatarContainer: {
-    flexDirection: "column",
-    justifyContent: "center",
-    marginBottom: 30,
   },
   name: {
     fontSize: 32,

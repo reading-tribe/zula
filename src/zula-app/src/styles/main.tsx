@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import theme from '../constants/Colors';
+import { platform } from "../constants/Layout";
 
 export default StyleSheet.create({
   container: {
@@ -38,7 +39,7 @@ export default StyleSheet.create({
     borderColor: theme.primary,
     alignSelf: "center",
   },
-  primaryButton:{
+  primaryButton: {
     backgroundColor: theme.primary,
   },
   inputContainer: {
@@ -47,13 +48,13 @@ export default StyleSheet.create({
     alignItems: "center",
     width: "100%",
   },
-  inPutlabel:{
+  inPutlabel: {
     textAlign: "left",
     justifyContent: "flex-start",
-    color: theme.secondary, 
-    marginBottom: 5, 
+    color: theme.secondary,
+    marginBottom: 5,
     alignSelf: "flex-start",
-    fontSize: 15, 
+    fontSize: 15,
   },
   input: {
     borderTopWidth: 1,
@@ -68,14 +69,27 @@ export default StyleSheet.create({
     paddingRight: 15,
     flex: 1
   },
+  avatarContainer: {
+    display: 'flex',
+    flexBasis: "100%",
+    flexDirection: platform == "web" ? "row" : "column",
+    flexWrap: "wrap",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
+    marginBottom: 30,
+  },
   avatar: {
-    width: 300,
+    display: 'flex',
+    alignItems: "center",
+    justifyContent: "center",
+    flexBasis: platform === "web" ? "33%" : "80%",
+    flexDirection: platform == "web" ? "row" : "column",
+    width: platform === "web" ? "33%" : "80%",
     height: 300,
     marginBottom: 30,
     borderRadius: 150,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: theme.primary,
   }
 });

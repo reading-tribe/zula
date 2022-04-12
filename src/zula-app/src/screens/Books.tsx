@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, ScrollView, Text, TextInput, View, TouchableHighlight } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import Card from "../components/Card";
 import BookCard from "./BookCard";
 import style from "../styles/main"
 
@@ -30,7 +29,7 @@ const Books = ({ navigation }: RootStackScreenProps<"Books">) => {
       <ScrollView>
         <Text
           style={[style.description]}
-        >{t("description")}</Text>
+        >{t("intro.description")}</Text>
         <View style={[style.inputContainer]}>
           <TextInput
             style={style.input}

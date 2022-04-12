@@ -18,13 +18,13 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
       [key]: value,
     }))
   };
-  
+
   const handleSubmit = (user: LoginRequest) => {
     dispatch(loginUser({
       emailAddress: user.emailAddress,
       password: user.password
     }))
-    if (user){
+    if (user) {
       navigation.navigate("Dashboard")
     }
   };
@@ -32,8 +32,8 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
   return (
     <View style={style.container}>
       <Text style={[style.title]}>Zula</Text>
-      <Text style={[style.subtitle]}>{t("subtitle")}</Text>
-      <Text style={[style.description]}>{t("description")}</Text>
+      <Text style={[style.subtitle]}>{t("intro.subtitle")}</Text>
+      <Text style={[style.description]}>{t("intro.description")}</Text>
       <Text style={style.inPutlabel}>Name</Text>
       <Text style={style.inPutlabel}>Email</Text>
       <View style={style.inputContainer}>

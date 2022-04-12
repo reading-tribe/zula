@@ -1,4 +1,6 @@
 {
-   "subtitle": "The Reading Tribe",
-   "description": "Welcome! Its Good To See You"
+   "intro": {
+      "subtitle": "The Reading Tribe",
+      "description": "Welcome! Its Good To See You"
+   }
 }

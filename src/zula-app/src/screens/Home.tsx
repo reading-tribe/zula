@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
-import { StyleSheet, Text, View , TouchableHighlight } from "react-native";
+import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
 import theme from "../constants/Colors";
@@ -17,17 +17,17 @@ const Home = ({ navigation }: RootStackScreenProps<"Home">) => {
       <Text style={[style.title]}>Zula</Text>
       <Text
         style={[style.subtitle]}
-      >{t("subtitle")}</Text>
-      <Text style={[style.description, styles.description]}>{t("description")}</Text>
+      >{t("intro.subtitle")}</Text>
+      <Text style={[style.description, styles.description]}>{t("intro.description")}</Text>
       <View style={styles.buttonContainer} >
         <TouchableHighlight
-          style={[style.button, {backgroundColor: theme.primary}]}
+          style={[style.button, { backgroundColor: theme.primary }]}
           onPress={() => navigation.navigate("Login")}
         >
           <Text>Login</Text>
         </TouchableHighlight>
         <TouchableHighlight
-          style={[style.button, {backgroundColor: theme.secondary}]}
+          style={[style.button, { backgroundColor: theme.secondary }]}
           onPress={() => navigation.navigate("Signup")}
         >
           <Text style={styles.signupText}>Create New Account</Text>

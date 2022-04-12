@@ -2,37 +2,37 @@ import React, { useState, useEffect } from 'react';
 import { Platform, ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useTranslation } from "react-i18next";
 import { Appbar } from 'react-native-paper';
-import theme from "../constants/Colors";
 import style from "../styles/main"
+import theme from "../constants/Colors";
 
 const bookList = [
-  { 
-  title: "The Adventure", 
-  subtitle: "Pablo Rio, 2010, South Africa"
- },
-  { 
-  title: "The Adventures", 
-  subtitle: "Pablo Rio, 2010, South Africa"
- },
+  {
+    title: "The Adventure",
+    subtitle: "Pablo Rio, 2010, South Africa"
+  },
+  {
+    title: "The Adventures",
+    subtitle: "Pablo Rio, 2010, South Africa"
+  },
 ];
 
 const suggestedBookList = [
-  { 
-  title: "The Adventure", 
-  subtitle: "Pablo Rio, 2010, South Africa"
- },
-  { 
-  title: "The Adventures", 
-  subtitle: "Pablo Rio, 2010, South Africa"
- },
- { 
-  title: "The Adventurer", 
-  subtitle: "Pablo Rio, 2010, South Africa"
- },
-  { 
-  title: "The Adventurers", 
-  subtitle: "Pablo Rio, 2010, South Africa"
- },
+  {
+    title: "The Adventure",
+    subtitle: "Pablo Rio, 2010, South Africa"
+  },
+  {
+    title: "The Adventures",
+    subtitle: "Pablo Rio, 2010, South Africa"
+  },
+  {
+    title: "The Adventurer",
+    subtitle: "Pablo Rio, 2010, South Africa"
+  },
+  {
+    title: "The Adventurers",
+    subtitle: "Pablo Rio, 2010, South Africa"
+  },
 ];
 
 export interface BookProps {
@@ -47,13 +47,12 @@ export const Book = () => {
 
   useEffect(() => {
     const effect = async () => {
-      await bookList;
-      setStateValues(bookList);
-      setSuggestedValues(suggestedBookList);
-      setRecentValues(bookList)
+      await setStateValues(bookList);
+      await setSuggestedValues(suggestedBookList);
+      await setRecentValues(bookList)
     };
     effect();
-  }, []);
+  }, [books, recentBooks, suggestedBooks]);
 
   return (
     <View>
@@ -75,7 +74,7 @@ export const Book = () => {
         )}
       </View>
       <View style={[style.container, styles.recentBook]}>
-          <Text style={styles.title}>My Recent Readings</Text>
+        <Text style={styles.title}>My Recent Readings</Text>
         {recentBooks.map((recentBook, index) => (
           <View key={recentBook.title} style={styles.bookCard}>
             <View style={styles.bookImage}></View>
@@ -92,7 +91,7 @@ export const Book = () => {
         )}
       </View>
       <View style={[style.container, styles.suggestedBook]}>
-          <Text style={styles.title}>Zula Made Some Suggestions Based On YOur Reading</Text>
+        <Text style={styles.title}>Zula Made Some Suggestions Based On YOur Reading</Text>
         {suggestedBooks.map((book, index) => (
           <View key={book.title} style={styles.bookCard}>
             <View style={styles.bookImage}></View>

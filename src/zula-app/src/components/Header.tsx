@@ -1,11 +1,11 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Appbar } from 'react-native-paper';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import { Appbar, Button, Menu, Divider } from 'react-native-paper';
 import theme from "../constants/Colors";
 
 export interface HeaderProps {
-  headerRight: JSX.Element | string;
   headerLeft: JSX.Element | string;
+  headerRight: JSX.Element | string;
   title: JSX.Element | string;
 }
 
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignContent: 'center',
     flexDirection: 'row',
-   backgroundColor: theme.primary,
+    backgroundColor: theme.white,
   },
   headerTitle: {
     flexBasis: '33%',
@@ -48,4 +48,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'blue',
   },
+  languageContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  }
 });
