@@ -1,5 +1,5 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
-import axios from "axios"
+import { translationEndpoint } from "./api"
 
 export interface TranslationState {
   translation: object
@@ -46,88 +46,103 @@ const {
   reducers: {
     updateTranslationAction: (state, { payload }) => ({
       ...state,
-      translation: payload.translation
+      translation: payload
     }),
     createTranslationAction: (state, { payload }) => ({
       ...state,
-      translation: payload.translation
+      translation: payload
     }),
     getTranslationAction: (state, { payload }) => ({
       ...state,
-      translation: payload.translation
+      translation: payload
     }),
     getTranslationsAction: (state, { payload }) => ({
       ...state,
-      translation: payload.translation
+      translation: payload
     }),
     deleteTranslationAction: (state, { payload }) => ({
       ...state,
-      translation: payload.translation,
+      translation: payload,
     }),
   },
 });
 
 export const createTranslation = (translation: CreateTranslationRequest) => async (dispatch: Dispatch) => {
-  const response = await axios.post("https://fgxdnldga8.execute-api.eu-central-1.amazonaws.com/translation", translation);
-  const data = await response.data;
-
-  dispatch(
-    createTranslationAction({
-      id: data.id,
-      book_id: data.book_id,
-      localised_title: data.localised_title,
-      language: data.language,
-    })
-  );
+  try {
+    const response = await translationEndpoint.post("/translation", translation);
+    const data = await response.data;
+    console.log("CREATE TRANSLATION RESPONSE:", data)
+    dispatch(
+      createTranslationAction({
+        payload: data
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const getTranslation = (translation: GetTranslationResponse) => async (dispatch: Dispatch) => {
-  const response = await axios.get(` https://fgxdnldga8.execute-api.eu-central-1.amazonaws.com/translation/${translation.id}`);
-  const data = await response.data;
-
-  dispatch(
-    getTranslationAction({
-      id: data.id,
-      book_id: data.book_id,
-      localised_title: data.localised_title,
-      language: data.language,
-    })
-  );
+  try {
+    const response = await translationEndpoint.get(` /translation/${translation.id}`);
+    const data = await response.data;
+    console.log("GET TRANSLATION RESPONSE:", data)
+    dispatch(
+      getTranslationAction({
+        id: data.id,
+        book_id: data.book_id,
+        localised_title: data.localised_title,
+        language: data.language,
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
-export const listTranslations = (translation: Translation) => async (dispatch: Dispatch) => {
-  const response = await axios.get("https://8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/translation");
-  const data = await response.data;
-
-  dispatch(
-    getTranslationsAction({
-      translation: data
-    })
-  );
+export const listTranslations = () => async (dispatch: Dispatch) => {
+  try {
+    const response = await translationEndpoint.get("/translation");
+    const data = await response.data;
+    console.log("TRANSLATIONSLIST RESPONSE:", data)
+    dispatch(
+      getTranslationsAction({
+        payload: data
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const updateTranslation = (translation: UpdateTranslationRequest) => async (dispatch: Dispatch) => {
-  const response = await axios.patch(`https://fgxdnldga8.execute-api.eu-central-1.amazonaws.com/translation/${translation.book_id}`);
-  const data = await response.data;
-
-  dispatch(
-    updateTranslationAction({
-      id: data.id,
-      internal_title: data.title,
-      authors: data.authors
-    })
-  );
+  try {
+    const response = await translationEndpoint.patch(`/translation/${translation.book_id}`);
+    const data = await response.data;
+    console.log("UPDATE TRANSLATION RESPONSE:", data)
+    dispatch(
+      updateTranslationAction({
+        payload: data
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
-export const deleteTranslation = (translation: GetTranslationResponse) => async (dispatch: Dispatch) => {
-  const response = await axios.delete(`https://fgxdnldga8.execute-api.eu-central-1.amazonaws.com/translation/${translation.id}`);
-  const data = await response.data;
-
-  dispatch(
-    deleteTranslationAction({
-      translation: data
-    })
-  );
+export const deleteTranslation = (translation: Translation) => async (dispatch: Dispatch) => {
+  try {
+    const response = await translationEndpoint.delete(`/translation/${translation.id}`);
+    const data = await response.data;
+    console.log("DELETE TRANSLATION RESPONSE:", data)
+    dispatch(
+      deleteTranslationAction({
+        payload: data
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export { createTranslationAction, deleteTranslationAction, getTranslationAction, getTranslationsAction, updateTranslationAction };

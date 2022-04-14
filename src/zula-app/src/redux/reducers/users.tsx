@@ -1,18 +1,18 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
-import axios from "axios"
+import { userEndpoint } from "./api"
 
 export interface UserState {
   user: object
 }
 
 export interface RegisterRequest {
-	emailAddress: string;
-	password: string;
+  emailAddress: string;
+  password: string;
 }
 
 export interface LoginRequest {
-	emailAddress: string;
-	password: string;
+  emailAddress: string;
+  password: string;
 }
 
 const INITIAL_STATE: UserState = {
@@ -28,58 +28,64 @@ const {
   reducers: {
     updateUserAction: (state, { payload }) => ({
       ...state,
-      user: payload.user
+      user: payload
     }),
     createUserAction: (state, { payload }) => ({
       ...state,
-      user: payload.user
+      user: payload
     }),
     getUserAction: (state, { payload }) => ({
       ...state,
-      user: payload.user
+      user: payload
     }),
     loginUserAction: (state, { payload }) => ({
       ...state,
-      user: payload.user,
+      user: payload
     }),
   },
 });
 
 export const createUser = (user: RegisterRequest) => async (dispatch: Dispatch) => {
-  const response = await axios.post("https://81qrzgok36.execute-api.eu-central-1.amazonaws.com/auth/register", user);
-  const data = await response.data;
-  console.log("response XX#####", data.message);
-
-  dispatch(
-    createUserAction({
-      message: data.message
-    })
-  );
+  try {
+    const response = await userEndpoint.post("/auth/register", user);
+    const data = await response.data;
+    dispatch(
+      createUserAction({
+        payload: data.message
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const getUser = () => async (dispatch: Dispatch) => {
-  const response = await fetch("https://randomuser.me/api/");
-  const data = await response.json();
-  /*  console.log("response", data.results[0]); */
-  
-  const user = data.results[0];
-  dispatch(
-    getUserAction({
-      user: user
-    })
-  );
+  try {
+    const response = await fetch("https://randomuser.me/api/");
+    const data = await response.json();
+    const user = data.results[0];
+    dispatch(
+      getUserAction({
+        payload: user
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const loginUser = (user: LoginRequest) => async (dispatch: Dispatch) => {
-  const response = await axios.post("https://81qrzgok36.execute-api.eu-central-1.amazonaws.com/auth/login", user);
-  const data = await response.data;
-
-  dispatch(
-    loginUserAction({
-      message: data.message,
-      token: data.token
-    })
-  );
+  try {
+    const response = await userEndpoint.post("/auth/login", user);
+    const data = await response.data;
+    dispatch(
+      loginUserAction({
+        payload: data
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export { createUserAction, updateUserAction, getUserAction, loginUserAction };

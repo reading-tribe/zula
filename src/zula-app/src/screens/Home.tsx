@@ -12,6 +12,11 @@ const Home = ({ navigation }: RootStackScreenProps<"Home">) => {
   const user = useSelector(state => state);
   const { t } = useTranslation();
 
+  useEffect(() => {
+     // console.log("USER:", user) 
+     // dispatch(getUser()) 
+  }, []);
+
   return (
     <View>
       <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>

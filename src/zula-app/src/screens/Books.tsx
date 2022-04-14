@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, ScrollView, Text, TextInput, View, TouchableHighlight } from "react-native";
+import { connect, useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
+import { listBooks, Book, getBooksAction } from "../redux/reducers/books"
 import BookCard from "./BookCard";
 import style from "../styles/main"
 
@@ -13,15 +15,15 @@ const bookList = [
 ];
 
 const Books = ({ navigation }: RootStackScreenProps<"Books">) => {
+  const dispatch = useDispatch()
+  const book = useSelector(state => state);
   const [books, setStateValues] = useState(bookList);
   const { t } = useTranslation();
 
+
   useEffect(() => {
-    const effect = async () => {
-      await bookList;
-      setStateValues(bookList);
-    };
-    effect();
+    console.log("BOOKS PAGE:", book)
+    dispatch(listBooks())
   }, []);
 
   return (
@@ -50,7 +52,15 @@ const Books = ({ navigation }: RootStackScreenProps<"Books">) => {
     </View>
   );
 }
-export default Books;
+export default connect(
+  state => ({
+    book: state
+  }),
+  {
+    listBooks,
+    getBooksAction
+  }
+)(Books);
 
 const styles = StyleSheet.create({
 

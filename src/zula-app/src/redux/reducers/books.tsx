@@ -1,5 +1,5 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
-import axios from "axios"
+import { bookEndpoint } from "./api"
 
 export interface BookState {
   book: object
@@ -75,66 +75,78 @@ const {
 });
 
 export const createBook = (book: CreateBookRequest) => async (dispatch: Dispatch) => {
-  const response = await axios.post("https://8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/book", book);
-  const data = await response.data;
-  console.log("response XX#####", data.message);
-
-  dispatch(
-    createBookAction({
-      id: data.id,
-      internal_title: data.title,
-      authors: data.authors
-    })
-  );
+  try {
+    const response = await bookEndpoint.post("/book", book);
+    const data = await response.data;
+    console.log("response XX#####", data.message);
+    dispatch(
+      createBookAction({
+        payload: data
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const getBook = (book: GetBookResponse) => async (dispatch: Dispatch) => {
-  const response = await axios.get(`https://8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/book/${book.id}`);
-  const data = await response;
-  /*  console.log("response", data.results[0]); */
-
-  dispatch(
-    getBookAction({
-      book: data
-    })
-  );
+  try {
+    const response = await bookEndpoint.get(`/book/${book.id}`);
+    const data = await response.data;
+    console.log("GETBOOK:", data)
+    dispatch(
+      getBookAction({
+        payload: data
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
-export const listBooks = (book: ListBooksResponse) => async (dispatch: Dispatch) => {
-  const response = await axios.get("https://8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/book");
-  const data = await response.data;
-
-  dispatch(
-    getBooksAction({
-      book: data
-    })
-  );
+export const listBooks = () => async (dispatch: Dispatch) => {
+  try {
+    const response = await bookEndpoint.get("/book");
+    const data = await response.data;
+    console.log("LISTBOOKS:", data)
+    dispatch(
+      getBooksAction({
+        payload: data
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const updateBook = (book: UpdateBookRequest) => async (dispatch: Dispatch) => {
-  const response = await axios.patch(`https://8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/book/${book.id}`);
-  const data = await response.data;
-  /*   console.log("response XX#####", data.message); */
-
-  dispatch(
-    updateBookAction({
-      id: data.id,
-      internal_title: data.title,
-      authors: data.authors
-    })
-  );
+  try {
+    const response = await bookEndpoint.patch(`/book/${book.internal_title}`);
+    const data = await response.data;
+    console.log("UPDATEBOOK:", data)
+    dispatch(
+      updateBookAction({
+        payload: data
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export const deleteBook = (book: GetBookResponse) => async (dispatch: Dispatch) => {
-  const response = await axios.delete(`https://8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/book/${book.id}`);
-  const data = await response.data;
-  console.log("response XX#####", data.message);
-
-  dispatch(
-    deleteBookAction({
-      book: data
-    })
-  );
+  try {
+    const response = await bookEndpoint.delete(`/book/${book.id}`);
+    const data = await response.data;
+    console.log("DELETEBOOK:", data.message);
+    dispatch(
+      deleteBookAction({
+        payload: data
+      })
+    );
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 export { createBookAction, deleteBookAction, getBookAction, getBooksAction, updateBookAction };
