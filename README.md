@@ -17,4 +17,5 @@ src/
   webapp/
     public/  -- contains frontend public assets
     src/  -- contains React frontend code
+  zula-app/ -- contains React Native mobile application
 ```
