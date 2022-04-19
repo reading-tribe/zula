@@ -1,10 +1,13 @@
 import { combineReducers } from "redux";
 import booksReducer from "./books";
+import authReducer from "./auth";
 
-const reducers = combineReducers({
+const allReducers = combineReducers({
   books: booksReducer,
+  auth: authReducer,
 });
 
-export default reducers;
+export default allReducers;
 
-export type RootState = ReturnType<typeof reducers>;
+// Applying types to React/Redux
+export type RootState = ReturnType<typeof allReducers>;

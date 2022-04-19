@@ -1,3 +1,6 @@
+//middleware
 export * from "./store";
-export * as books from "./books";
+//actions
+export * as books from "./action-creators/books";
+//reducers
 export * from "./reducers";

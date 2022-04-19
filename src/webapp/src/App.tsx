@@ -6,8 +6,6 @@ import { createBrowserHistory } from "history";
 import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import LandingAuth from "./pages/LandingAuthPage";
-// Redux
-import { Provider } from "react-redux";
 
 export default function App() {
   const history = createBrowserHistory();
