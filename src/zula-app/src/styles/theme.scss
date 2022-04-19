@@ -1,0 +1,21 @@
+// Color variables
+$primary: #a0dab3;
+$secondary: #00263a;
+$danger: #ff7676;
+$success: #46b3fc;
+$white: #f7f7f7;
+$black: #3c3c3c;
+$gray: #d1d1d1;
+
+// Theme Colors
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $danger,
+  "success": $success,
+  "gray": $gray,
+  "white": $white,
+  "black": $black,
+);
+
+$gradient: linear-gradient(to right, $primary, $secondary);
