@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../styles/landingAuth/LandingAuth.css";
 
-export const LandingAuth = () => {
+export const LandingAuth: React.FC = () => {
   return (
     <div className="landingAuth-container">
       <div className="container">

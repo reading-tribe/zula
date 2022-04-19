@@ -9,7 +9,7 @@
       -ms-flex-align: center;
           align-items: center;
   height: 100vh;
-  background-color: #00263a;
+  background-color: #ffffff;
 }
 
 .landingAuth-container .container {
@@ -42,7 +42,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #00263a;
+  background-color: #ffffff;
   width: 80%;
 }
 
@@ -70,28 +70,29 @@
   height: 80%;
   padding: 1.8rem 2.5rem;
   width: 45%;
-  border: 1px solid #a0dab3;
+  border: 1px solid;
   border-radius: 6.25rem;
+  background-color: #00263a;
 }
 
 .landingAuth-container h1 {
   font-family: Futura;
   font-size: 4.37rem;
   line-height: 5rem;
-  color: white;
+  color: #00263a;
 }
 
 .landingAuth-container h3 {
   font-family: Futura;
   font-size: 4.37rem;
   line-height: 3rem;
-  color: #a0dab3;
+  color: #00263a;
 }
 
 .landingAuth-container p {
   font-family: Futura;
   font-size: 1.56rem;
   line-height: 2.18rem;
-  color: #a0dab3;
+  color: #00263a;
 }
 /*# sourceMappingURL=LandingAuth.css.map */

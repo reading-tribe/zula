@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../styles/login/Login.css";
 
-export const Login = () => {
+export const Login: React.FC = () => {
   return (
     <div className="login-container">
       <div className="container">
