@@ -1,6 +1,50 @@
 {
-  "intro": {
-    "subtitle": "Der Lesestamm",
-    "description": "Willkommen! Schön, Sie zu sehen"
+  "books": {
+    "title": "Lesen für deine Zukunft mit Zula, dem Lesestamm"
+  },
+  "home": {
+    "title": "Willkommen! Schön, Sie zu sehen"
+  },
+  "login": {
+    "title": "Willkommen! Schön, Sie zu sehen"
+  },
+  "signup": {
+    "title": "Join our reading tribe"
+  },
+  "dashboard": {
+    "title": "Willkommen! Schön, Sie zu sehen",
+    "subtitle": "Der Lesestamm"
+  },
+  "aboutUs": {
+    "title": "Willkommen! Schön, Sie zu sehen"
+  },
+  "bookCard": {
+    "title": "Willkommen! Schön, Sie zu sehen"
+  },
+  "bookList": {
+    "title": "Bücher suchen",
+    "subtitle": "Sie können Bücher auch nach Kategorien suchen"
+  },
+  "createBook": {
+    "title": "Ein Buch erstellen"
+  },
+  "changePassword": {
+    "title": "Ihr Passwort vergessen?"
+ },
+  "header": {
+
+  },
+  "menu": {
+  
+  },
+  "notFound": {
+    "title": "Dieser Seite ist nicht vorhanden.",
+    "subtitle": "Gehe zum Startseite!"
+  },
+  "profile": {
+    "title": "Profil-Bildschirm"
+  },
+  "profileSettings": {
+    "title": "Profil-Einstellungen"
   }
 }

@@ -1,5 +1,5 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
-import { userEndpoint } from "./api"
+import { api } from "./api"
 
 export interface UserState {
   user: object
@@ -47,15 +47,16 @@ const {
 
 export const createUser = (user: RegisterRequest) => async (dispatch: Dispatch) => {
   try {
-    const response = await userEndpoint.post("/auth/register", user);
-    const data = await response.data;
+    const response = await api.post("/81qrzgok36.execute-api.eu-central-1.amazonaws.com/auth/register", user);
+    const data = await response;
+    console.log("CREATE USER:", data)
     dispatch(
       createUserAction({
-        payload: data.message
+        payload: data
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log("Error Message", error)
   }
 };
 
@@ -70,21 +71,22 @@ export const getUser = () => async (dispatch: Dispatch) => {
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 
 export const loginUser = (user: LoginRequest) => async (dispatch: Dispatch) => {
   try {
-    const response = await userEndpoint.post("/auth/login", user);
+    const response = await api.post("/81qrzgok36.execute-api.eu-central-1.amazonaws.com/auth/login", user);
     const data = await response.data;
+    console.log("LOGIN USER:", data)
     dispatch(
       loginUserAction({
         payload: data
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 

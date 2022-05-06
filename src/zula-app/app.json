@@ -9,14 +9,7 @@
     "userInterfaceStyle": "automatic",
     "packagerOpts": {
       "config": "metro.config.js",
-      "sourceExts": [
-        "js",
-        "jsx",
-        "ts",
-        "tsx",
-        "scss",
-        "sass"
-      ]
+      "sourceExts": ["js", "jsx", "ts", "tsx", "scss", "sass"]
     },
     "splash": {
       "image": "./src/assets/images/splash.png",
@@ -30,13 +23,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ansud06.zulaapp"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ansud06.zulaapp"
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"

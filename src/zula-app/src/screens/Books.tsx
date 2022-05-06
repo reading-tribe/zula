@@ -1,66 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, ScrollView, Text, TextInput, View, TouchableHighlight } from "react-native";
+import { StyleSheet, ScrollView, Text, TextInput, View, TouchableHighlight, TouchableOpacity } from "react-native";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
 import { listBooks, Book, getBooksAction } from "../redux/reducers/books"
+import { FullHeightScrollView } from "../components/FullHeightScrollView";
+import { bookList, suggestedBookList } from "./bookslist"
 import BookCard from "./BookCard";
-import style from "../styles/main"
+import style from "../styles/main";
+import theme from "../constants/Colors";
 
-const bookList = [
-  { title: "The Adventure", subtitle: "Pablo Rio, 2010, South Africa" },
-  { title: "The Adventures", subtitle: "Pablo Rio, 2010, South Africa" },
-  { title: "The Adventurer", subtitle: "Pablo Rio, 2010, South Africa" },
-  { title: "The Adventurers", subtitle: "Pablo Rio, 2010, South Africa" },
-];
+const Books = ({ route, navigation }: RootStackScreenProps<"Books">) => {
+  console.log("BOOKS UI Route ###:", { route })
+  const [newBooks, setNewBookValues] = useState([]);
+  const [recentBooks, setRecentValues] = useState([]);
+  const [suggestedBooks, setSuggestedValues] = useState([]);
 
-const Books = ({ navigation }: RootStackScreenProps<"Books">) => {
   const dispatch = useDispatch()
   const book = useSelector(state => state);
-  const [books, setStateValues] = useState(bookList);
   const { t } = useTranslation();
 
-
   useEffect(() => {
-    console.log("BOOKS PAGE:", book)
+    setNewBookValues(bookList);
+    setSuggestedValues(suggestedBookList);
+    setRecentValues(bookList)
     dispatch(listBooks())
-  }, []);
+  }, [newBooks, recentBooks, suggestedBooks]);
 
   return (
-    <View>
-      <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
-        <View style={style.container}>
-          <Text style={[style.description]}>{t("intro.description")}</Text>
-          <View style={[style.inputContainer]}>
-            <TextInput
-              style={style.input}
-              placeholder="Search"
-              secureTextEntry={true}
-              underlineColorAndroid="transparent"
-              autoCapitalize="none"
-            />
-          </View>
-          <BookCard />
-          <TouchableHighlight
-            style={[style.button, style.whiteButton]}
-            onPress={() => navigation.navigate("Dashboard")}
-          >
-            <Text>Back</Text>
-          </TouchableHighlight>
+    <FullHeightScrollView >
+      <View style={style.container}>
+        <Text style={[style.title]}>{t("books.title")}</Text>
+        <View style={[style.inputContainer]}>
+          <TextInput
+            style={style.input}
+            placeholder="Search"
+            secureTextEntry={true}
+            underlineColorAndroid="transparent"
+            autoCapitalize="none"
+          />
         </View>
-      </ScrollView>
-    </View>
+        <BookCard navigation={navigation} newBooks={newBooks} recentBooks={recentBooks} suggestedBooks={suggestedBooks} />
+        <TouchableHighlight
+          style={[style.button, style.whiteButton]}
+          onPress={() => navigation.goBack()}
+        >
+          <Text>Back</Text>
+        </TouchableHighlight>
+      </View>
+    </FullHeightScrollView>
   );
 }
-export default connect(
-  state => ({
-    book: state
-  }),
-  {
-    listBooks,
-    getBooksAction
-  }
-)(Books);
+
+export default Books;
 
 const styles = StyleSheet.create({
 

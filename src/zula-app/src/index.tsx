@@ -5,6 +5,7 @@ import Navigation from "./navigation";
 import useColorScheme from "./navigation/hooks/useColorScheme";
 import { store } from "./redux/store";
 import { theme, Colors } from "./constants";
+/* import styles from "./styles/index.scss"; */
 
 declare global {
   namespace ReactNativePaper {

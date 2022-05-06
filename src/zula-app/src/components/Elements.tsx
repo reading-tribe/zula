@@ -32,6 +32,13 @@ export function TouchableHighlight(props: ButtonProps) {
   return <Button style={[{ backgroundColor }, style]} {...otherProps} />;
 }
 
+export function TextBottom(props: TextProps) {
+  const { style, themeColor, ...otherProps } = props;
+  const color = useThemeColor({ light: themeColor, dark: themeColor }, 'text');
+
+  return <DefaultText style={[{ color }, style]} {...otherProps} />;
+}
+
 export function Text(props: TextProps) {
   const { style, themeColor, ...otherProps } = props;
   const color = useThemeColor({ light: themeColor, dark: themeColor }, 'text');

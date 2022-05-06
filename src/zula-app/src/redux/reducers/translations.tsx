@@ -1,5 +1,5 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
-import { translationEndpoint } from "./api"
+import { api } from "./api"
 
 export interface TranslationState {
   translation: object
@@ -69,7 +69,7 @@ const {
 
 export const createTranslation = (translation: CreateTranslationRequest) => async (dispatch: Dispatch) => {
   try {
-    const response = await translationEndpoint.post("/translation", translation);
+    const response = await api.post("/fgxdnldga8.execute-api.eu-central-1.amazonaws.com/translation", translation);
     const data = await response.data;
     console.log("CREATE TRANSLATION RESPONSE:", data)
     dispatch(
@@ -78,13 +78,13 @@ export const createTranslation = (translation: CreateTranslationRequest) => asyn
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 
 export const getTranslation = (translation: GetTranslationResponse) => async (dispatch: Dispatch) => {
   try {
-    const response = await translationEndpoint.get(` /translation/${translation.id}`);
+    const response = await api.get(`/fgxdnldga8.execute-api.eu-central-1.amazonaws.com/translation/${translation.id}`);
     const data = await response.data;
     console.log("GET TRANSLATION RESPONSE:", data)
     dispatch(
@@ -96,13 +96,13 @@ export const getTranslation = (translation: GetTranslationResponse) => async (di
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 
 export const listTranslations = () => async (dispatch: Dispatch) => {
   try {
-    const response = await translationEndpoint.get("/translation");
+    const response = await api.get("/fgxdnldga8.execute-api.eu-central-1.amazonaws.com/translation");
     const data = await response.data;
     console.log("TRANSLATIONSLIST RESPONSE:", data)
     dispatch(
@@ -111,13 +111,13 @@ export const listTranslations = () => async (dispatch: Dispatch) => {
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 
 export const updateTranslation = (translation: UpdateTranslationRequest) => async (dispatch: Dispatch) => {
   try {
-    const response = await translationEndpoint.patch(`/translation/${translation.book_id}`);
+    const response = await api.patch(`/fgxdnldga8.execute-api.eu-central-1.amazonaws.com/translation/${translation.book_id}`);
     const data = await response.data;
     console.log("UPDATE TRANSLATION RESPONSE:", data)
     dispatch(
@@ -126,13 +126,13 @@ export const updateTranslation = (translation: UpdateTranslationRequest) => asyn
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 
 export const deleteTranslation = (translation: Translation) => async (dispatch: Dispatch) => {
   try {
-    const response = await translationEndpoint.delete(`/translation/${translation.id}`);
+    const response = await api.delete(`/fgxdnldga8.execute-api.eu-central-1.amazonaws.com/translation/${translation.id}`);
     const data = await response.data;
     console.log("DELETE TRANSLATION RESPONSE:", data)
     dispatch(
@@ -141,7 +141,7 @@ export const deleteTranslation = (translation: Translation) => async (dispatch: 
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 

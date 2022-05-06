@@ -2,24 +2,30 @@ import React, { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
-import { FullHeightScrollView } from "../components/FullHeightScrollView";
 import theme from "../constants/Colors";
 import { platform } from "../constants/Layout";
 import style from "../styles/main"
 
-const Profile = ({ navigation }: RootStackScreenProps<"Profile">) => {
+const ProfileSettings = ({ navigation }: RootStackScreenProps<"ProfileSettings">) => {
   const { t } = useTranslation();
 
   return (
-    <FullHeightScrollView >
-      <View style={style.container}>
-        <Text>Profile Screen</Text>
-      </View>
-    </FullHeightScrollView>
+    <View style={{ flex: 1 }}>
+      <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+        <View style={style.container}>
+          <Text style={style.title}>Profile settings</Text>
+          <TouchableHighlight
+            style={[style.button, style.whiteButton]}
+            onPress={() => navigation.navigate("Login")}>
+            <Text>Sign Out</Text>
+          </TouchableHighlight>
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
-export default Profile;
+export default ProfileSettings;
 
 const styles = StyleSheet.create({
   button: {

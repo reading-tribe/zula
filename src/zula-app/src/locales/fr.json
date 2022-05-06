@@ -1,6 +1,50 @@
 {
-  "intro": {
-    "subtitle": "La tribu des lecteurs",
-    "description": "Bienvenue ! C'est bon de vous voir"
- }
+ "books": {
+  "title": "Lisez pour votre avenir avec Zula, la tribu de la lecture"
+},
+"home": {
+  "title": "Bienvenue ! C'est bon de vous voir"
+},
+"login": {
+  "title": "Bienvenue ! C'est bon de vous voir"
+},
+"signup": {
+  "title": "Join our reading tribe"
+},
+"dashboard": {
+  "title": "Bienvenue ! C'est bon de vous voir",
+  "subtitle": "La tribu des lecteurs"
+},
+"aboutUs": {
+  "title": "Bienvenue ! C'est bon de vous voir"
+},
+"bookCard": {
+  "title": "Bienvenue ! C'est bon de vous voir"
+},
+"bookList": {
+  "title": "Chercher des livres",
+  "subtitle": "Vous pouvez également rechercher des livres par catégorie"
+},
+"createBook": {
+  "title": "Créer un livre"
+},
+"changePassword": {
+  "title": "Vous avez oublié votre mot de passe?"
+},
+"header": {
+
+},
+"menu": {
+
+},
+"notFound": {
+  "title": "Cette page n'existe pas.",
+  "subtitle": "Va à la page d'accueil!"
+},
+"profile": {
+  "title": "Écran de profil"
+},
+"profileSettings": {
+  "title": "Paramètres du profil"
+}
 }

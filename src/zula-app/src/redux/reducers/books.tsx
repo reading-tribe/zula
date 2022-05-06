@@ -1,8 +1,12 @@
 import { createSlice, Dispatch } from "@reduxjs/toolkit";
-import { bookEndpoint } from "./api"
+import { api} from "./api"
 
 export interface BookState {
   book: object
+}
+
+export interface BookListState {
+  book: BookState[]
 }
 
 export interface Book {
@@ -76,22 +80,22 @@ const {
 
 export const createBook = (book: CreateBookRequest) => async (dispatch: Dispatch) => {
   try {
-    const response = await bookEndpoint.post("/book", book);
+    const response = await api.post("/8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/book", book);
     const data = await response.data;
-    console.log("response XX#####", data.message);
+    console.log("response XX#####", data);
     dispatch(
       createBookAction({
         payload: data
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 
 export const getBook = (book: GetBookResponse) => async (dispatch: Dispatch) => {
   try {
-    const response = await bookEndpoint.get(`/book/${book.id}`);
+    const response = await api.get(`/8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/book/${book.id}`);
     const data = await response.data;
     console.log("GETBOOK:", data)
     dispatch(
@@ -100,13 +104,13 @@ export const getBook = (book: GetBookResponse) => async (dispatch: Dispatch) => 
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 
 export const listBooks = () => async (dispatch: Dispatch) => {
   try {
-    const response = await bookEndpoint.get("/book");
+    const response = await api.get("/8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/book");
     const data = await response.data;
     console.log("LISTBOOKS:", data)
     dispatch(
@@ -115,13 +119,13 @@ export const listBooks = () => async (dispatch: Dispatch) => {
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 
 export const updateBook = (book: UpdateBookRequest) => async (dispatch: Dispatch) => {
   try {
-    const response = await bookEndpoint.patch(`/book/${book.internal_title}`);
+    const response = await api.put(`/8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/book/${book.internal_title}`);
     const data = await response.data;
     console.log("UPDATEBOOK:", data)
     dispatch(
@@ -130,13 +134,13 @@ export const updateBook = (book: UpdateBookRequest) => async (dispatch: Dispatch
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 
 export const deleteBook = (book: GetBookResponse) => async (dispatch: Dispatch) => {
   try {
-    const response = await bookEndpoint.delete(`/book/${book.id}`);
+    const response = await api.delete(`/8oufr7mu4f.execute-api.eu-central-1.amazonaws.com/book/${book.id}`);
     const data = await response.data;
     console.log("DELETEBOOK:", data.message);
     dispatch(
@@ -145,7 +149,7 @@ export const deleteBook = (book: GetBookResponse) => async (dispatch: Dispatch) 
       })
     );
   } catch (error) {
-    console.log(error)
+    console.log(error.response.data)
   }
 };
 

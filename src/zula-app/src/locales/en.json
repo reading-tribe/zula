@@ -1,6 +1,50 @@
 {
-   "intro": {
-      "subtitle": "The Reading Tribe",
-      "description": "Welcome! Its Good To See You"
-   }
+   "books": {
+      "title": "Read For Your Future With Zula The Reading Tribe"
+    },
+    "home": {
+      "title": "Welcome! Its Good To See You"
+    },
+    "login": {
+      "title": "Welcome! Its Good To See You"
+    },
+    "signup": {
+      "title": "Join our reading tribe"
+    },
+    "dashboard": {
+      "title": "Welcome! Its Good To See You",
+      "subtitle": "The Reading Tribe"
+    },
+    "aboutUs": {
+      "title": "Welcome! Its Good To See You"
+    },
+    "bookCard": {
+      "title": "Welcome! Its Good To See You"
+    },
+    "bookList": {
+      "title": "Search Books",
+      "subtitle": "You can also search books by category"
+    },
+    "createBook": {
+      "title": "Create A Book"
+    },
+    "changePassword": {
+      "title": "Forgot Your Password?"
+   },
+    "header": {
+  
+    },
+    "menu": {
+    
+    },
+    "notFound": {
+      "title": "This screen does not exist.",
+      "subtitle": "Go to home screen!"
+    },
+    "profile": {
+      "title": "Profile Screen"
+    },
+    "profileSettings": {
+      "title": "Profile Settings"
+    }
 }
