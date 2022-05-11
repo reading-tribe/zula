@@ -27,7 +27,11 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
       password: user.password
     }))
     if (user) {
-      navigation.navigate("Dashboard")
+      navigation.navigate("Dashboard", {
+        userId: "",
+        name: "",
+        nickname: ""
+      })
     }
   };
 
@@ -40,7 +44,6 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
       <View style={[style.container]}>
         <View style={style.inputContainer}>
           <Text style={[style.title]}>{t("signup.title")}</Text>
-          {/*  <Text style={style.inPutlabel}>Email</Text> */}
           <TextInput
             ref={inputRef}
             style={style.input}
@@ -73,7 +76,11 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={[style.subtitle, { marginTop: 10 }]}
-              onPress={() => navigation.navigate("Login")}
+              onPress={() => navigation.navigate("Login", {
+                userId: "",
+                name: "",
+                nickname: ""
+              })}
             >
               <Text>Back to login</Text>
             </TouchableOpacity>
@@ -81,7 +88,12 @@ const Signup = ({ navigation }: RootStackScreenProps<"Signup">) => {
         </View>
 
         <View style={[style.bottomView]} >
-          <TouchableOpacity onPress={() => navigation.navigate("Books")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Books",
+            {
+              userId: "",
+              name: "",
+              nickname: ""
+            })}>
             <Text style={[style.textBottom]}>Enter As Guest</Text>
           </TouchableOpacity>
         </View>

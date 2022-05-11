@@ -8,12 +8,12 @@ import { FullHeightScrollView } from "../components/FullHeightScrollView";
 import theme from "../constants/Colors";
 import style from "../styles/main"
 
-const Login = ({route, navigation }: RootStackScreenProps<"Login">) => {
+const Login = ({ route, navigation }: RootStackScreenProps<"Login">) => {
   const [user, setUsers] = useState({ emailAddress: "", password: "" });
   const dispatch = useDispatch()
   const { t } = useTranslation();
   const inputRef = React.createRef<TextInput>();
- 
+
   const handleChange = (key: string, value: string) => {
     setUsers((prev) => ({
       ...prev,
@@ -39,8 +39,7 @@ const Login = ({route, navigation }: RootStackScreenProps<"Login">) => {
     <FullHeightScrollView >
       <View style={style.container}>
         <View style={style.inputContainer}>
-          {/*   <Text style={style.inPutlabel}>Email</Text> */}
-        <Text style={[style.title]}>{t("login.title")}</Text>
+          <Text style={[style.title]}>{t("login.title")}</Text>
           <TextInput
             ref={inputRef}
             style={style.input}
@@ -74,21 +73,29 @@ const Login = ({route, navigation }: RootStackScreenProps<"Login">) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={[style.subtitle, styles.resetPassword]}
-              onPress={() => navigation.navigate("ChangePassword")}
+              onPress={() => navigation.navigate("ChangePassword", {
+                userId: "",
+                name: "",
+                nickname: ""
+              })}
             >
               <Text>{t("changePassword.title")}</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-          <View style={[style.bottomView]}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Signup")}
-            >
-              <Text style={[style.textBottom]}>Don't have an account? Register</Text>
-            </TouchableOpacity>
-          </View>
+        <View style={[style.bottomView]}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Signup", {
+              userId: "",
+              name: "",
+              nickname: ""
+            })}
+          >
+            <Text style={[style.textBottom]}>Don't have an account? <Text style={{color: theme.secondary}}>Register</Text> </Text>
+          </TouchableOpacity>
         </View>
+      </View>
 
     </FullHeightScrollView>
   );

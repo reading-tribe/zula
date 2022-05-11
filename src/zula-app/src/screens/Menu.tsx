@@ -16,17 +16,29 @@ const Menu = ({ navigation }: RootStackScreenProps<"Menu">) => {
         <View style={style.avatarContainer}>
           <TouchableOpacity
             style={styles.avatarImage}
-            onPress={() => navigation.navigate("Books")}>
+            onPress={() => navigation.navigate("Books", {
+              userId: "",
+              name: "",
+              nickname: ""
+            })}>
             <Text>Njinga</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.avatarImage}
-            onPress={() => navigation.navigate("Books")}>
+            onPress={() => navigation.navigate("Books", {
+              userId: "",
+              name: "",
+              nickname: ""
+            })}>
             <Text>Tarik</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.avatarImage}
-            onPress={() => navigation.navigate("Books")}>
+            onPress={() => navigation.navigate("Books", {
+              userId: "",
+              name: "",
+              nickname: ""
+            })}>
             <Text>Ramona</Text>
           </TouchableOpacity>
         </View>
@@ -42,22 +54,38 @@ const Menu = ({ navigation }: RootStackScreenProps<"Menu">) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("BookList")}>
+          onPress={() => navigation.navigate("BookList", {
+            userId: "",
+            name: "",
+            nickname: ""
+          })}>
           <Text>Zula Books</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("BookList")}>
+          onPress={() => navigation.navigate("BookList", {
+            userId: "",
+            name: "",
+            nickname: ""
+          })}>
           <Text>My bookshelf</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[style.button, style.primaryButton]}
-          onPress={() => navigation.navigate("ProfileSettings")}>
+          onPress={() => navigation.navigate("ProfileSettings", {
+            userId: "",
+            name: "",
+            nickname: ""
+          })}>
           <Text>Profile Settings</Text>
         </TouchableOpacity>
         <TouchableHighlight
           style={[style.button, style.whiteButton]}
-          onPress={() => navigation.navigate("Login")}>
+          onPress={() => navigation.navigate("Login", {
+            userId: "",
+            name: "",
+            nickname: ""
+          })}>
           <Text>Sign Out</Text>
         </TouchableHighlight>
       </View>

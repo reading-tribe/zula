@@ -15,7 +15,7 @@ const BookList = ({ navigation }: RootStackScreenProps<"BookList">) => {
   const dispatch = useDispatch()
   const book = useSelector(state => state);
   let bok = {} as Book
-  const [books, setBooks] = useState([]);
+  const [books, setBooks] = useState(bookCategories);
   const [searchBooks, setSearchBooks] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
@@ -76,7 +76,11 @@ const BookList = ({ navigation }: RootStackScreenProps<"BookList">) => {
           </TouchableHighlight>
           <TouchableHighlight
             style={[style.pill, style.yellowButton]}
-            onPress={() => navigation.navigate("Dashboard")}
+            onPress={() => navigation.navigate("Dashboard", {
+              userId: "12345",
+              name: "user name",
+              nickname: "user nickname"
+            })}
           >
             <Text>Award-winning</Text>
           </TouchableHighlight>

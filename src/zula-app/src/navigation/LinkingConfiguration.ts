@@ -22,47 +22,47 @@ const linking: LinkingOptions<RootStackParamList> = {
           },
           Login: {
             screens: {
-              LoginScreen: '/Home/Login',
+              LoginScreen: '/Login',
             },
           },
           Signup: {
             screens: {
-              SignupScreen: '/Home/Signup',
+              SignupScreen: '/Signup',
             },
           },
           Books: {
             screens: {
-              BookScreen: '/Home/Books',
+              BookScreen: '/Books',
             },
           },
           Dashboard: {
             screens: {
-              Dashboard: '/Home/Dashboard',
+              Dashboard: '/Dashboard',
             },
           },
           ChangePassword: {
             screens: {
-              Dashboard: '/Home/ChangePassword',
+              Dashboard: '/ChangePassword',
             },
           },
           ResetPassword: {
             screens: {
-              Dashboard: '/Home/ResetPassword',
+              Dashboard: '/ResetPassword',
             },
           },
           AboutUs: {
             screens: {
-              Dashboard: '/Home/AboutUs',
+              Dashboard: '/AboutUs',
             },
           },
           Profile: {
             screens: {
-              Profile: '/Home/Profile',
+              Profile: '/Profile',
             },
           },
           ProfileSettings: {
             screens: {
-              Profile: '/Home/ProfileSetting',
+              Profile: '/ProfileSetting',
             },
           }
         },

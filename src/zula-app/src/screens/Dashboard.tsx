@@ -12,6 +12,8 @@ import theme from "../constants/Colors";
 import style from "../styles/main"
 
 const Dashboard = ({route, navigation }: RootStackScreenProps<"Dashboard">) => {
+  const name = route.params?.name;
+  const nickname = route.params?.nickname
   const [users, setUsers] = useState<UserState[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
@@ -44,7 +46,7 @@ const Dashboard = ({route, navigation }: RootStackScreenProps<"Dashboard">) => {
               <Text style={styles.nickname}>{profile.nickname}</Text>
               <Text style={styles.child}>{profile.child}</Text>
               <Modal visible={isOpen} onDismiss={showModal}>
-                <EditDashboard profile={profile} />
+                <EditDashboard profile={profile} navigation={navigation} />
               </Modal>
             </TouchableOpacity>
           ))}

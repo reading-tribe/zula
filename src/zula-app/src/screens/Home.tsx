@@ -7,7 +7,6 @@ import { RootStackScreenProps } from "../../types";
 import theme from "../constants/Colors";
 import { FullHeightScrollView } from "../components/FullHeightScrollView";
 import style from "../styles/main";
-import '../styles/index.scss';
 import { getUser, UserState, getUserAction } from "../redux/reducers/users"
 
 const userData = {
@@ -32,18 +31,26 @@ const Home = ({ route, navigation }: RootStackScreenProps<"Home">) => {
 
   return (
     <FullHeightScrollView >
-      <View style={[style.container, {justifyContent: "space-around"}]}>
+      <View style={[style.container, { justifyContent: "space-around" }]}>
         <Text style={[style.title]}>{t("home.title")}</Text>
         <View style={[styles.buttonContainer]} >
           <TouchableHighlight
             style={[style.button, style.primaryButton]}
-            onPress={() => navigation.navigate("Login")}
+            onPress={() => navigation.navigate("Login", {
+              userId: "",
+              name: "",
+              nickname: ""
+            })}
           >
             <Text>Login</Text>
           </TouchableHighlight>
           <TouchableHighlight
             style={[style.button, style.secondaryButton]}
-            onPress={() => navigation.navigate("Signup")}
+            onPress={() => navigation.navigate("Signup", {
+              userId: "",
+              name: "",
+              nickname: ""
+            })}
           >
             <Text style={styles.signupText}>Create New Account</Text>
           </TouchableHighlight>

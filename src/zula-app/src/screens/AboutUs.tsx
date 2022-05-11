@@ -21,11 +21,17 @@ const AboutUs = ({ navigation }: RootStackScreenProps<"AboutUs">) => {
   return (
     <FullHeightScrollView>
       <View style={style.container}>
-        <Text style={[style.title]}>About Zula</Text>
-        <Text style={[style.subtitle]}>{t("intro.subtitle")}</Text>
+        <View style={style.inputContainer}>
+        <Text style={[style.title]}>{t("aboutUs.title")}</Text>
+        <Text style={[style.subtitle]}>{t("aboutUs.subtitle")}</Text>
+        </View>
         <TouchableHighlight
           style={[style.button, style.whiteButton]}
-          onPress={() => navigation.navigate("Dashboard")}>
+          onPress={() => navigation.navigate("Dashboard", {
+            userId: "",
+            name: "",
+            nickname: ""
+          })}>
           <Text>back</Text>
         </TouchableHighlight>
       </View>

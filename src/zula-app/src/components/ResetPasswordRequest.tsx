@@ -5,14 +5,20 @@ import style from "../styles/main"
 
 const ResetPasswordRequest = (props) => {
   const navigation = props.navigation
-  const isOpen = props.navigation
+  const isOpen = props.isOpen
   const showModal = props.showModal
   const [code, setCode] = useState("")
 
+
   const resetPassword = () => {
     if (isOpen) {
-      navigation.navigate("Books")
+      navigation.navigate("ProfileSettings", {
+        userId: "12345",
+        name: "user name",
+        nickname: "user nickname"
+      })
     }
+    showModal()
   }
 
   const handleChange = (value: string) => {
@@ -39,7 +45,7 @@ const ResetPasswordRequest = (props) => {
           <View style={style.buttonContainer} >
             <TouchableHighlight
               style={[style.button, style.whiteButton]}
-              onPress={showModal}>
+              onPress={resetPassword}>
               <Text style={styles.loginText}>Verify</Text>
             </TouchableHighlight>
           </View>

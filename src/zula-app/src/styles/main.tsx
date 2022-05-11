@@ -1,18 +1,12 @@
 import { StyleSheet } from 'react-native';
-import { useTheme } from 'react-native-paper';
 import theme from '../constants/Colors';
 import { platform } from "../constants/Layout";
-import { api } from '../redux/reducers/api';
 
-const { colors } = useTheme();
-
-console.log("COLORS", colors)
 export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
     alignContent: "center",
-  /*   backgroundColor: colors.primary, */
     flexDirection: "column",
     justifyContent: 'space-between',
     padding: 10,
@@ -48,10 +42,9 @@ export default StyleSheet.create({
     marginBottom: 10,
     borderRadius: 100,
     borderWidth: 1,
-    borderColor: colors.primary,
+    borderColor: theme.primary,
     alignSelf: "center",
   },
-
   buttonContainer: {
     flex: 1,
     display: "flex",
@@ -71,23 +64,19 @@ export default StyleSheet.create({
     padding: 10,
     borderRadius: 100,
     borderWidth: 1,
-    borderColor: colors.primary,
+    borderColor: theme.primary,
     alignSelf: "center",
   },
   bottomView: {
-    /* backgroundColor: colors.primary, */
     width: '100%',
     display: "flex",
     height: 50,
     justifyContent: 'center',
-   
     flexDirection: "column",
     alignContent: "center",
     alignItems: "center",
- 
-   /* position:"absolute", */
-   right:0,
-   bottom: 10,
+    right: 0,
+    bottom: 20,
     alignSelf: 'flex-end',
   },
   textBottom: {
@@ -95,14 +84,14 @@ export default StyleSheet.create({
     margin: "auto",
     fontWeight: "bold",
     textAlign: "center",
-    color: colors.primary,
+    color: theme.primary,
     marginBottom: 20,
     lineHeight: 30,
     alignSelf: 'center',
   },
   primaryButton: {
     width: "45%",
-    backgroundColor: colors.primary,
+    backgroundColor: theme.primary,
   },
   secondaryButton: {
     width: "45%",
@@ -184,7 +173,7 @@ export default StyleSheet.create({
     width: platform === "web" ? "33%" : "45%",
     height: 100,
     borderRadius: 150,
-    backgroundColor: colors.primary,
+    backgroundColor: theme.primary,
     marginBottom: 30,
   },
   avatarImage: {
@@ -195,6 +184,6 @@ export default StyleSheet.create({
     width: 70,
     margin: 10,
     height: 60,
-    backgroundColor: colors.primary
+    backgroundColor: theme.primary
   },
 });

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity } from "react-native";
+import { ScrollView, TextInput, StyleSheet, Text, View, TouchableHighlight, TouchableOpacity } from "react-native";
 import { useTranslation } from "react-i18next";
 import { RootStackScreenProps } from "../../types";
 import { FullHeightScrollView } from "../components/FullHeightScrollView";
@@ -7,13 +7,46 @@ import theme from "../constants/Colors";
 import { platform } from "../constants/Layout";
 import style from "../styles/main"
 
-const Profile = ({ navigation }: RootStackScreenProps<"Profile">) => {
+const Profile = ({ route, navigation }: RootStackScreenProps<"Profile">) => {
   const { t } = useTranslation();
+  const name = route.params?.name;
+  const nickname = route.params?.nickname
 
   return (
     <FullHeightScrollView >
       <View style={style.container}>
-        <Text>Profile Screen</Text>
+        <Text style={[style.subtitle]}>Edit {name} {nickname}</Text>
+        <View style={style.inputContainer}>
+          <TextInput
+            style={style.input}
+            placeholder={name}
+            keyboardType="default"
+            placeholderTextColor={theme.primary}
+            underlineColorAndroid="transparent"
+            autoCapitalize="none"
+          />
+
+          <TextInput
+            style={style.input}
+            placeholder={nickname}
+            secureTextEntry={true}
+            placeholderTextColor={theme.primary}
+            underlineColorAndroid="transparent"
+            autoCapitalize="none"
+          />
+        </View>
+        <View style={style.buttonContainer}>
+          <TouchableHighlight
+            style={[style.button, style.primaryButton]}
+            onPress={() => navigation.navigate("Books", {
+              userId: "",
+              name: "",
+              nickname: ""
+            })}
+          >
+            <Text>Save</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     </FullHeightScrollView>
   );

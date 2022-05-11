@@ -16,7 +16,11 @@ const ProfileSettings = ({ navigation }: RootStackScreenProps<"ProfileSettings">
           <Text style={style.title}>Profile settings</Text>
           <TouchableHighlight
             style={[style.button, style.whiteButton]}
-            onPress={() => navigation.navigate("Login")}>
+            onPress={() => navigation.navigate("Login", {
+              userId: "",
+              name: "",
+              nickname: ""
+            })}>
             <Text>Sign Out</Text>
           </TouchableHighlight>
         </View>

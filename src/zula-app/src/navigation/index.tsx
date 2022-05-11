@@ -46,7 +46,7 @@ const Homestack = createNativeStackNavigator<HomeStackParamList>();
 function HomestackNavigator() {
   const options = {
     customHeader: {
-      header: ({ navigation, route, options, back }) => {
+      header: ({ navigation, route, options }) => {
         const opt = options.header
         return (
           <Header
@@ -57,13 +57,14 @@ function HomestackNavigator() {
             headerRight={
               <Avatar navigation={navigation} />
             }
+            navigation={navigation}
           />
         );
       }
     },
 
     dashboardHeader: {
-      header: ({ navigation, route, options, back }) => {
+      header: ({ navigation, route, options }) => {
         const title = getHeaderTitle(options, route.name);
         return (
           <Header
@@ -72,14 +73,16 @@ function HomestackNavigator() {
               <LanguageSelect />
             }
             headerRight={
-              <EditIcon navigation={navigation} />}
+              <EditIcon navigation={navigation} />
+            }
+            navigation={navigation}
           />
         );
       }
     },
 
     homeHeader: {
-      header: ({ navigation, route, options, back }) => {
+      header: ({ navigation, route, options }) => {
         const title = getHeaderTitle(options, route.name);
         return (
           <Header
@@ -90,13 +93,14 @@ function HomestackNavigator() {
             headerRight={
               <LanguageSelect />
             }
+            navigation={navigation}
           />
         );
       }
     },
 
     loginHeader: {
-      header: ({ navigation, route, options, back }) => {
+      header: ({ navigation, route, options }) => {
         const title = getHeaderTitle(options, route.name);
         return (
           <Header
@@ -107,6 +111,7 @@ function HomestackNavigator() {
             headerRight={
               <LanguageSelect />
             }
+            navigation={navigation}
           />
         );
       }
@@ -134,7 +139,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   const options = {
     customHeader: {
-      header: ({ navigation, route, options, back }) => {
+      header: ({ navigation, route, options }) => {
         return (
           <Header
             title=""
@@ -153,7 +158,7 @@ function RootNavigator() {
   return (
     <Stack.Navigator initialRouteName="Home" >
       <Stack.Screen name="Home" component={HomestackNavigator} options={{ headerShown: false }} />
-      <Homestack.Screen name="NotFound" component={NotFoundScreen} options={options.customHeader} />
+      <Stack.Screen name="NotFound" component={NotFoundScreen} options={options.customHeader} />
       <Stack.Group screenOptions={{ presentation: 'modal', }}>
         <Stack.Screen name="Menu" component={MenuScreen} options={{ headerShown: false }} />
       </Stack.Group>

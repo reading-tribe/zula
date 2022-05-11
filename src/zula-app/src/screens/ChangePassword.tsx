@@ -7,7 +7,8 @@ import { loginUser, LoginRequest, UserState, loginUserAction } from "../redux/re
 import { RootStackScreenProps } from "../../types";
 import { FullHeightScrollView } from "../components/FullHeightScrollView";
 import ResetPasswordRequest from "../components/ResetPasswordRequest";
-import style from "../styles/main"
+import style from "../styles/main";
+import theme from "../constants/Colors";
 
 const ChangePassword = ({ navigation }: RootStackScreenProps<"ChangePassword">) => {
   const [user, setUsers] = useState({ emailAddress: "" });
@@ -43,10 +44,11 @@ const ChangePassword = ({ navigation }: RootStackScreenProps<"ChangePassword">) 
           <TextInput
             ref={inputRef}
             style={style.input}
-            placeholder="Email"
+            placeholder="Enter email"
             keyboardType="email-address"
             value={user.emailAddress}
             onChangeText={(text: string) => handleChange("emailAddress", text)}
+            placeholderTextColor={theme.primary}
             underlineColorAndroid="transparent"
             autoCapitalize="none"
           />

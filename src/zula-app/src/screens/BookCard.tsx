@@ -14,7 +14,11 @@ export const Book = (props) => {
       <View style={[styles.newBook]}>
         <Text style={styles.title}>New Books in Zula</Text>
         {newBooks.map((newBook, index) => (
-          <TouchableOpacity key={newBook.id} onPress={() => navigation.navigate("BookList")} style={styles.bookCard}>
+          <TouchableOpacity key={newBook.id} onPress={() => navigation.navigate("BookList", {
+            userId: "",
+            name: "",
+            nickname: ""
+          })} style={styles.bookCard}>
             <View style={styles.bookImage}></View>
             <View style={styles.description}>
               <Text >
@@ -31,7 +35,11 @@ export const Book = (props) => {
       <View style={[styles.recentBook]}>
         <Text style={styles.title}>My Recent Readings</Text>
         {recentBooks.map((recentBook, index) => (
-          < TouchableOpacity key={recentBook.id} onPress={() => navigation.navigate("BookList")} style={styles.bookCard}>
+          < TouchableOpacity key={recentBook.id} onPress={() => navigation.navigate("BookList", {
+            userId: "",
+            name: "",
+            nickname: ""
+          })} style={styles.bookCard}>
             <View style={styles.bookImage}></View>
             <View style={styles.description}>
               <Text >
@@ -48,7 +56,11 @@ export const Book = (props) => {
       <View style={[styles.suggestedBook]}>
         <Text style={styles.title}>Zula Made Some Suggestions Based On YOur Reading</Text>
         {suggestedBooks.map((suggestedBook, index) => (
-          < TouchableOpacity key={suggestedBook.id} onPress={() => navigation.navigate("BookList")} style={styles.bookCard}>
+          < TouchableOpacity key={suggestedBook.id} onPress={() => navigation.navigate("BookList", {
+            userId: "",
+            name: "",
+            nickname: ""
+          })} style={styles.bookCard}>
             <View style={styles.bookImage}></View>
             <View style={styles.description}>
               <Text >

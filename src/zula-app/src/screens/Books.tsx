@@ -11,10 +11,10 @@ import style from "../styles/main";
 import theme from "../constants/Colors";
 
 const Books = ({ route, navigation }: RootStackScreenProps<"Books">) => {
-  console.log("BOOKS UI Route ###:", { route })
-  const [newBooks, setNewBookValues] = useState([]);
-  const [recentBooks, setRecentValues] = useState([]);
-  const [suggestedBooks, setSuggestedValues] = useState([]);
+/*   console.log("BOOKS UI Route ###:", route) */
+  const [newBooks, setNewBookValues] = useState(bookList);
+  const [recentBooks, setRecentValues] = useState(suggestedBookList);
+  const [suggestedBooks, setSuggestedValues] = useState(bookList);
 
   const dispatch = useDispatch()
   const book = useSelector(state => state);
